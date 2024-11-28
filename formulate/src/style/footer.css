@@ -1,0 +1,53 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer h3 {
+    font-size: 14px;
+}
+
+.footer .section{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.section .find-us .image-footer { 
+    margin-right: 10px;
+}
+.section .image-footer img {
+    margin-top: 10px;
+    height: auto;
+    width: 20px; 
+}
+
+.footer .section a { 
+    font-size: 12px;
+    color: black;
+    text-decoration: none;
+}
+
+.footer .term-condition, 
+.footer .customer-care, 
+.footer .company-info,
+.footer .find-us{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.footer li { 
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.footer ul {
+    list-style-type: none;
+}
+
+.footer li a:hover { 
+    border-bottom: 1px solid black;
+}
+
+

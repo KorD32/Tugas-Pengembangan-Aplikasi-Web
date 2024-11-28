@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #f9f9f9; 
+    color: #333;
+    position: relative;
+    top: 120px;
+    width: 100%;
+}
+
+.login {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    padding: 20px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.body-forum {
+    background: white; 
+    padding: 30px; 
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 10px; 
+    width: 100%;
+    max-width: 400px;
+    text-align: center; 
+    margin-bottom: 60px;
+}
+
+.container-forum h2 {
+    margin-bottom: 20px;
+    color: #222; 
+}
+
+.container-forum .input-container {
+    width: 100%;
+    margin-bottom: 15px; 
+    text-align: left; 
+}
+
+.container-forum .label {
+    font-size: 12px; 
+    margin-bottom: 5px; 
+    color: #666;
+}
+
+.container-forum .input {
+    width: 100%; 
+    padding: 5px 10px; 
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    font-size: 12px;
+    outline: none; 
+    transition: border-color 0.3s ease; 
+}
+
+.container-forum .input:focus {
+    border: #666;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.reminder-buttom {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    font-size: 12px; 
+    margin: 20px 0;
+    width: 100%;
+}
+
+.reminder {
+    display: flex;
+    align-items: center; 
+}
+
+.checkbox {
+    margin-right: 5px; 
+}
+
+.reminder-buttom .lost-password a {
+    text-decoration: none; 
+    font-weight: bold; 
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.reminder-buttom .lost-password a:hover {
+    color:#333; 
+}
+
+.container-forum .buttom-login {
+    padding: 10px;
+    width: 100%;
+    background-color: #000000;
+    color: white;
+    border: none; 
+    border-radius: 8px;  
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+.container-forum .buttom-login:hover {
+    background-color:#333;
+}
+
+.middle-forum {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.middle-forum span {
+    font-size: 12px;
+    color: #666;
+    margin: 0 10px; 
+}
+
+hr {
+    flex: 1;
+    border: none;
+    border-top: 1px solid #ddd; 
+}
+
+.login-google {
+    margin: 20px 0;
+    width: 100%;
+    padding: 10px;
+    background: white; 
+    border: 1px solid rgba(0, 0, 0, 0.15); 
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Transisi efek */
+}
+.login-google p  {
+    font-size: 14px;
+}
+.login-google:hover {
+    background-color: #f8f9fa; 
+    border-color: rgba(0, 0, 0, 0.2); 
+}
+
+.google-image {
+    width: 20px;
+    height: auto;
+    margin-right: 10px; 
+}
+
+.create-account { 
+    font-size: 12px;
+}
+
+.create-account a { 
+    font-weight: bold;
+    color: black;
+}
+
+footer {
+    width: 100%;
+    padding: 40px 0;
+    border-radius: 10px;
+    background-color: #F4F5F5;
+}
