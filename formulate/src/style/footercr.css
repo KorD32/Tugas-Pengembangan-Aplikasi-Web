@@ -1,0 +1,11 @@
+.copyright {
+    display: flex;
+    padding: 30px;
+    align-items: center;
+    border-top: 1px solid rgb(216, 216, 216);
+    justify-content: space-between;
+}
+
+.copyright section p {
+    font-size: x-small;
+}

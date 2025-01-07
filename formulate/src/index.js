@@ -2,12 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { Dashboard } from './page/Dasboard';
+import { BrowserRouter } from 'react-router-dom'; 
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Membungkus aplikasi dengan BrowserRouter agar routing berfungsi
 root.render(
   <React.StrictMode>
-    <Dashboard/>
+    <BrowserRouter>
+      <App/>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

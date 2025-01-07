@@ -1,3 +1,4 @@
+import { FooterCr } from "../component/FooterCr"
 import { Footer } from "../component/FooterPart"
 import { HeaderDesktop } from "../component/HeaderDesktop"
 import "../style/dashboard.css"
@@ -25,6 +26,7 @@ export const Dashboard = () => {
             </main>
             <footer>
                 <Footer/>
+                <FooterCr/>
             </footer>
         </div>
     )

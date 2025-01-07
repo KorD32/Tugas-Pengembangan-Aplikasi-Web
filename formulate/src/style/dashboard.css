@@ -4,14 +4,6 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Raleway', sans-serif;
-    background-color: #f9f9f9; 
-    color: #333;
-    position: relative;
-    top: 80px;
-}
-
 .dashboard {
     position: relative;
     display: flex;
@@ -70,9 +62,7 @@ header {
 
 
 footer {
-    width: 98%;
-    margin-bottom: 20px;
-    padding: 40px 0;
+    width: 100%;
     border-radius: 10px;
     background-color: #F4F5F5;
 }

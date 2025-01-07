@@ -7,3 +7,11 @@
   width: 1440px;
   max-width: 1440px;
 }
+body {
+  font-family: 'Raleway', sans-serif;
+  background-color: #f9f9f9; 
+  color: #333;
+  position: relative;
+  top: 80px;
+  width: 100%;
+}

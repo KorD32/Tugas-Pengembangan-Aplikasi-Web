@@ -1,6 +1,8 @@
 .footer {
+    padding-top: 40px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 80px;
 }
 
 .footer h3 {

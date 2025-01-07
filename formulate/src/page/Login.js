@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "../style/loginpage.css"
 import { HeaderDesktop } from "../component/HeaderDesktop";
 import { Footer } from "../component/FooterPart";
+import { FooterCr } from "../component/FooterCr";
 
 export const Login = () => {
     const [email, setEmail] = useState("");
@@ -101,6 +102,7 @@ export const Login = () => {
             </main>
             <footer>
                 <Footer/>
+                <FooterCr/>
             </footer>
         </div>
     );

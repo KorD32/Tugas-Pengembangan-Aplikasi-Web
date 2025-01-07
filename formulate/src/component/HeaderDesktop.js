@@ -1,34 +1,34 @@
-import React from "react"
-import "../style/headerdesktop.css"
-
+import React from "react";
+import "../style/headerdesktop.css";
+import { Link } from "react-router-dom";
 
 export const HeaderDesktop = () => { 
     return (
-        <header className="header-desktop"> 
-            <section> 
+        <header className="header-desktop">
+            <section>
                 <p className="brand">FORMULATE</p>
             </section>
-            <section> 
+            <section>
                 <ul className="nav_desktop">
                     <li>
-                        <a href="/Home">Home</a>
+                        <Link to="/dashboard/">Home</Link> 
                     </li>
                     <li>
-                        <a href="/Product">Produk</a>
+                        <Link to="/product">Produk</Link>
                     </li>
                     <li>
-                        <a href="/Education">Edukasi</a>
+                        <Link to="/education">Edukasi</Link> 
                     </li>
                     <li>
-                        <a href="/Contact">Tentang Kami</a>
+                        <Link to="/contact">Tentang Kami</Link> 
                     </li>
                 </ul>
             </section>
-            <section> 
-                <div className="buttom-login">
-                    <a href="loginpage" className="login-start">Start Now</a>
+            <section>
+                <div className="button-login">
+                    <Link to="/" className="login-start">Start Now</Link> 
                 </div>
             </section>
         </header>
-    )
-}
+    );
+};
