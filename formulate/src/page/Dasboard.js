@@ -1,6 +1,7 @@
 import { FooterCr } from "../component/FooterCr"
 import { Footer } from "../component/FooterPart"
 import { HeaderDesktop } from "../component/HeaderDesktop"
+import { ListProduct } from "../component/ProductSection"
 import "../style/dashboard.css"
 
 
@@ -14,14 +15,16 @@ export const Dashboard = () => {
             <main className="content-container">
                 <section className="section-dashboard-1">
                     <div className="background-image">
-                        <h1 className="brand">
-                            FORMULATE 
-                        </h1>
+                        <h1 className="brand">FORMULATE</h1>
+                        <p>Claim Your Spot for a Unique Self-Care Experience!</p>
                     </div>
                     <div className="formulate-plan">
                         <h1 className="brand">FORMULATE</h1>
                         <p>Formulate adalah solusi inovatif untuk perawatan diri yang dirancang untuk membantu anda mencapai penampilan terbaik dengan cara yang menyenangkan dan mudah. Dengan pendekatan berbasis data dan personalisasi, kami mengajak Anda untuk mengeksplorasi dunia perawatan diri dengan cara yang belum pernah Anda alami sebelumnya.</p>
                     </div>
+                </section>
+                <section>
+                    <ListProduct/>
                 </section>
             </main>
             <footer>
