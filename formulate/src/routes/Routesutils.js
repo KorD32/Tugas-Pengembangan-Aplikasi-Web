@@ -6,8 +6,8 @@ import NotFound from "../page/NotFound";
 function Routesutils() { 
     return (
         <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/dashboard/" element={<Dashboard />} />
+            <Route path="/login/" element={<Login />} />
+            <Route path="/" element={<Dashboard />} />
             <Route path="*" element={<NotFound />} />
 
         </Routes>
