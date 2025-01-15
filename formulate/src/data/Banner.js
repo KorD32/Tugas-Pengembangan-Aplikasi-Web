@@ -1,19 +1,25 @@
-const Banner = [
+import banner1 from "../image/banner1.png";
+import banner2 from "../image/banner2.png";
+import banner3 from "../image/banner3.png";
+import banner4 from "../image/banner4.png";
+
+const banner = [
     {
-        id : 1  ,
-        image :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5qOlr1k1_6wgy_e23FpDEgLJXF-PpEBrnQ_gvM5Ol6jnioPl09Xj9ofbKx94vqawfdPc&usqp=CAU"
+        id: 1,
+        cover: banner1 
     },
     {
-        id : 2  ,
-        image :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5qOlr1k1_6wgy_e23FpDEgLJXF-PpEBrnQ_gvM5Ol6jnioPl09Xj9ofbKx94vqawfdPc&usqp=CAU"
+        id: 2,
+        cover: banner2
     },
     {
-        id : 3  ,
-        image :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5qOlr1k1_6wgy_e23FpDEgLJXF-PpEBrnQ_gvM5Ol6jnioPl09Xj9ofbKx94vqawfdPc&usqp=CAU"
+        id: 3,
+        cover: banner3
     },
     {
-        id : 4  ,
-        image :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5qOlr1k1_6wgy_e23FpDEgLJXF-PpEBrnQ_gvM5Ol6jnioPl09Xj9ofbKx94vqawfdPc&usqp=CAU"
+        id: 4,
+        cover: banner4
     }
-]
-export default Banner;
+];
+
+export default banner;

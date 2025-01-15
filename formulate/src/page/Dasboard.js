@@ -1,3 +1,4 @@
+import { ListBanner } from "../component/BannerSection"
 import { FooterCr } from "../component/FooterCr"
 import { Footer } from "../component/FooterPart"
 import { HeaderDesktop } from "../component/HeaderDesktop"
@@ -25,6 +26,9 @@ export const Dashboard = () => {
                 </section>
                 <section>
                     <ListProduct/>
+                </section>
+                <section className="banner">
+                    <ListBanner/>
                 </section>
             </main>
             <footer>

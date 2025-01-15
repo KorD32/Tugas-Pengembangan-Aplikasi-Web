@@ -7,25 +7,28 @@ export const ListProduct = () => {
     const [activeIndex, setActiveIndex] = useState(0);
 
     const nextProduct = () => {
-        setActiveIndex((prevIndex) => (prevIndex + 1) % products.length);
+        if (activeIndex < products.length - 4) {
+            setActiveIndex(activeIndex + 1);
+        } else {
+            setActiveIndex(0);
+        }
     };
 
     const prevProduct = () => {
-        setActiveIndex((prevIndex) => (prevIndex - 1 + products.length) % products.length);
+        if (activeIndex > 0) {
+            setActiveIndex(activeIndex - 1);
+        } else {
+            setActiveIndex(products.length - 4);
+        }
     };
 
-    const displayedProducts = [
-        products[(activeIndex + 0) % products.length],
-        products[(activeIndex + 1) % products.length],
-        products[(activeIndex + 2) % products.length],
-        products[(activeIndex + 3) % products.length]
-    ];
+    const displayedProducts = products.slice(activeIndex, activeIndex + 4);
 
     return (
-        <section className='product-section' id="products">
-            <h1 className="product-dekstop">PRODUCT</h1>
+        <section className='product-section-desktop' id="products">
+            <h1 className="">Product</h1>
             <div className="product-slider">
-                <button className="prev-btn" onClick={prevProduct}>❮</button>
+                <button className="prev-button" onClick={prevProduct}>❮</button>
                 <div className="product-cards">
                     {displayedProducts.map(product => (
                         <ProductCard
@@ -36,7 +39,7 @@ export const ListProduct = () => {
                         />
                     ))}
                 </div>
-                <button className="next-btn" onClick={nextProduct}>❯</button>
+                <button className="next-button" onClick={nextProduct}>❯</button>
             </div>
         </section>
     );

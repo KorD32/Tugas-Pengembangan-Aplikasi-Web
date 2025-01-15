@@ -1,7 +1,6 @@
-.product-section { 
+.product-section-desktop {
     justify-items: center;
     padding: 40px 30px;
-    width: 100%;
 }
 
 .product-slider {
@@ -12,7 +11,7 @@
     align-items: center;
 }
 
-.prev-btn, .next-btn {
+.prev-button, .next-button {
     font-size: 20px;
     border: none;
     transform: translateY(-50%);
@@ -25,6 +24,8 @@
     display: flex;
     gap: 30px;
     justify-content: center;
+    flex-wrap: wrap; /* Agar card dapat membungkus di layar lebih kecil */
+    justify-items: center;
 }
 
 .product-card {
@@ -32,10 +33,12 @@
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 240px;
+    width: 240px; /* Ukuran standar card */
     text-align: center;
     background: linear-gradient(to bottom, #ffffff, #f9f9f9);
+    transition: width 0.3s ease;
 }
+
 .product-card img {
     max-width: 80%;
     height: auto;
@@ -59,3 +62,37 @@
     line-height: 1.4;
 }
 
+/* Media Queries untuk responsif */
+@media (max-width: 1024px) {
+    .product-card {
+        width: 220px; /* Mengurangi ukuran card pada layar tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .product-card {
+        width: 180px; /* Mengurangi ukuran card pada perangkat mobile */
+    }
+
+    .product-cards {
+        gap: 20px; /* Mengurangi gap antar card pada layar mobile */
+    }
+
+    .prev-button, .next-button {
+        font-size: 18px; /* Menyesuaikan ukuran tombol pada layar kecil */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card {
+        width: 150px; /* Menyesuaikan card lebih kecil pada perangkat sangat kecil */
+    }
+
+    .product-cards {
+        gap: 15px; /* Mengurangi gap lebih jauh */
+    }
+
+    .prev-button, .next-button {
+        font-size: 16px; /* Mengurangi ukuran tombol lebih kecil */
+    }
+}
