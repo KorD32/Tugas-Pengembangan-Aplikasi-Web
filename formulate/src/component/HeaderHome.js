@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import "../style/headerhome.css";
 import SearchIcon from '@mui/icons-material/Search';
 import { InputAdornment, TextField } from '@mui/material';
+import Notification from "./Notification";
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Link } from "react-router-dom";
+import HomeIcon from '@mui/icons-material/Home';
 
 export const HeaderHome = () => {
     const [isFocused, setIsFocused] = useState(false);
@@ -9,7 +14,7 @@ export const HeaderHome = () => {
     return (
         <header className="header-home">
             <div className="container">
-                <p className="brand">FORMULATE</p>
+                <Link to="/" className="brand">FORMULATE</Link>
                 <div className="search-box">
                     <TextField
                         placeholder="Search..."
@@ -29,6 +34,12 @@ export const HeaderHome = () => {
                             },
                         }}
                     />
+                </div>
+                <div className="icons">
+                    <Link to="/home"> <HomeIcon className="icon-home" /> </Link>
+                    <Notification />    
+                    <Link to="/keranjang"> <ShoppingBasketIcon className="icon-basket"/> </Link>
+                    <Link to="/profile"> <AccountCircleIcon className="icon-profile" /> </Link>
                 </div>
             </div>
         </header>
