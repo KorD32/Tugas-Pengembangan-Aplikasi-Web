@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ProductCard } from "../molecules/ProductCard";
 import products from "../data/Product";
-import "../style/productcard.css";
+import "../style/product.css";
 
 export const ListProduct = () => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -26,7 +26,7 @@ export const ListProduct = () => {
 
     return (
         <section className='product-section-desktop' id="products">
-            <h1 className="">Product</h1>
+            <h1>Product</h1>
             <div className="product-slider">
                 <button className="prev-button" onClick={prevProduct}>❮</button>
                 <div className="product-cards">

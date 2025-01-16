@@ -1,0 +1,107 @@
+.knowledge-list {
+    padding: 40px;
+    background-color: #f9f9f9;
+    width: 100%;
+}
+
+.knowledge-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;  /* Mengatur jarak antar card */
+    padding: 30px 0;
+}
+
+.knowledge-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    height: 450px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 370px;
+    padding: 15px;
+    margin: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;  /* Menjaga elemen tetap dalam batas card */
+}
+
+.knowledge-card:hover {
+    transform: translateY(-5px);  /* Memberikan efek mengambang */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.knowledge-card img {
+    width: 100%;
+    height: 200px;  /* Menyediakan ruang yang lebih jelas untuk gambar */
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.knowledge-card:hover img {
+    transform: scale(1.05);  /* Efek zoom pada gambar saat hover */
+}
+
+.knowledge-card .title {
+    color: #333;
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: 18px;  /* Memperbesar font judul */
+}
+
+.knowledge-card .description {
+    color: #555;
+    font-size: 14px;
+    margin: 10px 0;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.knowledge-card a {
+    text-decoration: none;
+    color: #0056b3;
+    font-weight: bold;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.knowledge-card a:hover {
+    color: #003366;  /* Menambah kontras saat hover */
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .knowledge-card {
+        width: 48%;  /* Menampilkan dua card per baris pada tablet */
+        height: auto;  /* Menyesuaikan tinggi card */
+    }
+
+    .knowledge-slide {
+        gap: 20px;  /* Mengurangi jarak antar card pada layar lebih kecil */
+        padding: 15px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .knowledge-card {
+        width: 100%;  /* Card menempati 100% lebar layar pada perangkat mobile */
+        height: auto;
+    }
+
+    .knowledge-slide {
+        flex-direction: column;
+        padding: 15px 0;
+        gap: 15px;  /* Mengurangi jarak antar card */
+    }
+}
+
+@media (max-width: 480px) {
+    .knowledge-list {
+        padding: 10px;
+    }
+
+    .knowledge-card {
+        padding: 20px;  /* Memberikan ruang lebih pada card */
+    }
+}

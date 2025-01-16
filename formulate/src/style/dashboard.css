@@ -4,12 +4,27 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Raleway', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
 .dashboard {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; 
+    flex-direction: column;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 header {
@@ -18,16 +33,26 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+header.scrolled {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 .content-container {
     width: 100%;
+    overflow: hidden;
 }
 
-.dashboard .section-dashboard-1 { 
+.dashboard .section-dashboard-1 {
     display: flex;
     width: 100%;
-    height: 80vh; 
+    height: 80vh;
+    overflow: hidden;
 }
 
 .background-image {
@@ -44,24 +69,68 @@ header {
     padding: 60px 40px;
     filter: brightness(0.9);
     color: black;
+    transform: translateX(-100%);
+    animation: slideIn 1s ease forwards;
 }
 
-.formulate-plan { 
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.formulate-plan {
     width: 40%;
     height: 100%;
     justify-content: center;
     display: flex;
     padding: 60px;
     flex-direction: column;
+    transform: translateY(100%);
+    animation: slideUp 1s ease 0.5s forwards;
 }
 
-.formulate-plan P {
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.formulate-plan p {
     margin-top: 15px;
     font-size: 14px;
+    color: #333;
+    line-height: 1.5;
 }
 
 footer {
     width: 100%;
     border-radius: 10px;
     background-color: #F4F5F5;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px);
+    animation: fadeInFooter 1s ease 1s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInFooter {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

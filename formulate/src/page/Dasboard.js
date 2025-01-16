@@ -2,6 +2,7 @@ import { ListBanner } from "../component/BannerSection"
 import { FooterCr } from "../component/FooterCr"
 import { Footer } from "../component/FooterPart"
 import { HeaderDesktop } from "../component/HeaderDesktop"
+import { KnowLedgeList } from "../component/KnowledgeSection"
 import { ListProduct } from "../component/ProductSection"
 import "../style/dashboard.css"
 
@@ -27,8 +28,11 @@ export const Dashboard = () => {
                 <section>
                     <ListProduct/>
                 </section>
-                <section className="banner">
+                <section >
                     <ListBanner/>
+                </section>
+                <section>
+                    <KnowLedgeList/>
                 </section>
             </main>
             <footer>

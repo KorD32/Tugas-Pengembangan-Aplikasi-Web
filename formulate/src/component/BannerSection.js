@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Banner from "../data/Banner";
 import { BannerCard } from "../molecules/BannerCard";
-import "../style/bannercard.css";
+import "../style/banner.css";
 
 export const ListBanner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

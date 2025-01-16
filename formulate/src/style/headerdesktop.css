@@ -3,18 +3,34 @@
     justify-content: space-between;
     align-items: center;
     height: 80px;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     padding: 0 20px;
-    background-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header-desktop.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 .brand { 
     font-family: 'Raleway', Arial, sans-serif;
-    font-size: 24px;
+    font-size: 28px;
     color: black;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.brand:hover { 
+    color: #424242;
 }
 
 .nav_desktop {
@@ -24,6 +40,7 @@
 .nav_desktop li {
     list-style-type: none;
     margin-left: 30px;
+    position: relative;
 }
 
 .nav_desktop li a { 
@@ -31,24 +48,47 @@
     color: black;
     font-family: 'Raleway', sans-serif; 
     font-size: 14px;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
 }
 
-.nav_desktop li a:hover { 
-    border-bottom: 1px solid black;
+.nav_desktop li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #000000;
+    transition: width 0.3s ease;
+}
+
+
+.nav_desktop li a:hover::after {
+    width: 100%;
 }
 
 .header-desktop .button-login {
-    padding: 5px 20px;
+    padding: 8px 25px;
     background-color: black;
-    border-radius: 10px;
+    border-radius: 25px;
+    display: inline-block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .header-desktop .button-login:hover { 
-    background-color:#333; 
+    background-color: #333;
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 .header-desktop .button-login .login-start { 
     text-decoration: none;
     color: white;
     font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
