@@ -3,6 +3,7 @@ import { Dashboard } from "../page/Dasboard";
 import { Login } from "../page/Login";
 import NotFound from "../page/NotFound";
 import { Profile } from "../page/Profile";
+import ProductDetail from "../page/ProductDetail";
 
 function Routesutils() { 
     return (
@@ -11,6 +12,7 @@ function Routesutils() {
             <Route path="*" element={<NotFound />} />
             <Route path="/login/" element={<Login />} />
             <Route path="/profile/" element={<Profile />} />
+            <Route path="/productdetail/" element={<ProductDetail />} />
 
         </Routes>
     );
