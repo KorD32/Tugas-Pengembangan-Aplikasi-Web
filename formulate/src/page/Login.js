@@ -5,66 +5,40 @@ import { HeaderDesktop } from "../component/HeaderDesktop";
 import { Footer } from "../component/FooterPart";
 import { FooterCr } from "../component/FooterCr";
 
+import axios from "axios";
+
 export const Login = () => {
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-    reminder: false,
-  });
+  const [id, setUserID] = useState("");
+  const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
 
-  const validateEmail = (email) => {
-    const conditionEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return conditionEmail.test(email);
-  };
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setForm((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
-
-  const submit = async (e) => {
+  const submitLogin = async (e) => {
     e.preventDefault();
-
-    if (!validateEmail(form.email)) {
-      alert("Email tidak valid. Pastikan menggunakan format email yang benar (contoh: example@gmail.com).");
-      return;
-    }
-
-    if (form.password.length < 6) {
-      alert("Password minimal harus 6 karakter.");
-      return;
-    }
-
     try {
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: form.email,
-          password: form.password,
-        }),
-      });
+      const response = await axios.post(
+        "http://localhost:3000/web/auth/login",
+        {
+          id,
+          password,
+        }
+      );
+      if(response.status === 200) {
+        console.log("Login Successful", response.data);
+        localStorage.setItem("loggedInStatus", 'true');
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("id", response.data.id);  
 
-      const data = await response.json();
-      
-      if (response.ok) {
-        console.log("Login successful:", data);
         navigate("/home");
       } else {
-        alert(data.message || "Email atau password salah.");
+        console.log("Login Failed", response.data);
+        alert("Wrong password or ID");
       }
-    } catch (error) {
-      alert("Terjadi kesalahan saat login, coba lagi.");
-      console.error("Error:", error);
+    } catch(error) {
+      console.error(error);
+      alert("Wrong password or ID");
     }
   };
-
   return (
     <div className="login">
       <header>
@@ -72,7 +46,7 @@ export const Login = () => {
       </header>
       <main className="body-forum">
         <section className="container-forum">
-          <form className="login-forum" onSubmit={submit}>
+          <form className="login-forum">
             <h2>Masuk ke akun mu</h2>
             <div className="input-container">
               <label className="label">Email</label>
@@ -80,9 +54,8 @@ export const Login = () => {
                 className="input"
                 type="email"
                 name="email"
-                value={form.email}
-                onChange={handleChange}
-                placeholder="Masukkan Email"
+                onChange={(e) => setUserID(e.target.value)}
+                placeholder="ID"
                 required
               />
             </div>
@@ -92,8 +65,7 @@ export const Login = () => {
                 className="input"
                 type="password"
                 name="password"
-                value={form.password}
-                onChange={handleChange}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="Masukkan Password"
                 required
               />
@@ -104,8 +76,6 @@ export const Login = () => {
                   className="checkbox"
                   type="checkbox"
                   name="reminder"
-                  checked={form.reminder}
-                  onChange={handleChange}
                 />
                 <label>Reminder</label>
               </div>
@@ -115,7 +85,8 @@ export const Login = () => {
                 </a>
               </div>
             </div>
-            <button className="buttom-login" type="submit">
+            <button className="buttom-login" type="submit"
+              onClick={submitLogin}>
               Masuk
             </button>
           </form>
