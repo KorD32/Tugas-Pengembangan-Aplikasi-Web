@@ -1,0 +1,192 @@
+/* ProductDetail.css */
+
+/* Container utama produk */
+.product-detail {
+    font-family: 'Arial', sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+  }
+  
+  /* Styling untuk gambar utama dan thumbnail */
+  .product-main {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .product-images {
+    flex: 1;
+  }
+  
+  .main-image img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .thumbnail-images {
+    display: flex;
+    margin-top: 15px;
+    gap: 10px;
+  }
+  
+  .product-thumbnail-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .product-thumbnail-img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Styling untuk info produk */
+  .product-info {
+    flex: 2;
+  }
+  
+  .product-info h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFD700;
+    margin-bottom: 10px;
+  }
+  
+  .rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .rating span {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #666;
+  }
+  
+  .quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .quantity-btn {
+    padding: 10px 15px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .quantity-btn:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .add-to-cart-btn {
+    padding: 15px 30px;
+    background-color: #FFD700;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #e6c100;
+  }
+  
+  /* Styling untuk produk rekomendasi */
+  .recommended-products {
+    margin-top: 40px;
+  }
+  
+  .recommended-products h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .recommended-items {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+  }
+  
+  .recommended-item {
+    text-align: center;
+    flex: 1;
+  }
+  
+  .recommended-img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .recommended-item p {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  .recommended-item .MuiRating-root {
+    margin-top: 5px;
+  }
+  
+  @media (max-width: 768px) {
+    /* Responsive layout untuk ukuran layar kecil */
+    .product-main {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .product-images {
+      flex: none;
+      margin-bottom: 20px;
+    }
+  
+    .product-info {
+      flex: none;
+      text-align: center;
+    }
+  
+    .thumbnail-images {
+      justify-content: center;
+    }
+  
+    .recommended-items {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .recommended-item {
+      margin-bottom: 20px;
+    }
+  }
+  

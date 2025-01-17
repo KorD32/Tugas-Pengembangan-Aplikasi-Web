@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { HeaderHome } from "../component/HeaderHome";
 import "../style/profile.css";
 import { TextField, Button, IconButton, Drawer, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
@@ -9,8 +10,8 @@ import History from "@mui/icons-material/History";
 import Settings from "@mui/icons-material/Settings";
 import SaveIcon from "@mui/icons-material/Save"; 
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import { useNavigate } from "react-router-dom";
-
+import { Footer } from "../component/FooterPart";
+import { FooterCr } from "../component/FooterCr";
 
 export const Profile = () => {
     const navigate = useNavigate();
@@ -64,7 +65,6 @@ export const Profile = () => {
     const [userPhone_number, setPhone_number] = useState("")
     const [userName, setUserName] = useState("")
 
-
     useEffect(() => {
         const loggedIn = localStorage.getItem("loggedInStatus");
         if (loggedIn === "true") {
@@ -82,8 +82,6 @@ export const Profile = () => {
             setEmail(storedEmail)
             setPhone_number(storedPhone_number)
             setAddress(storedAddress)
-
-
         } else {
             setIsLoggedIn(false);
             setUserId("");
@@ -92,7 +90,6 @@ export const Profile = () => {
             setEmail("")
             setPhone_number("")
             setAddress("")
-
         }
     }, []);
 
@@ -114,8 +111,6 @@ export const Profile = () => {
         setAddress("")
 
         navigate("/login");
-
-
     };
 
     return (
@@ -253,6 +248,10 @@ export const Profile = () => {
                     </div>
                 </div>
             </div>
+            <footer>
+                <Footer />
+                <FooterCr />
+            </footer>
         </div>
     );
 };

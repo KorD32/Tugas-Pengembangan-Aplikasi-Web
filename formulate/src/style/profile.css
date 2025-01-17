@@ -44,26 +44,6 @@
     display: block;
     margin: 40px auto;
     transition: transform 0.3s ease-in-out;
-    position: relative; /* Dibutuhkan untuk before/after */
-}
-
-.profile-picture::before,
-.profile-picture::after {
-    content: "";
-    position: absolute;
-    top: -6px;
-    left: -6px;
-    right: -6px;
-    bottom: -6px;
-    border-radius: 50%;
-    border: 2px solid rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.profile-picture:hover::before,
-.profile-picture:hover::after {
-    opacity: 1;
 }
 
 .profile-picture:hover {
