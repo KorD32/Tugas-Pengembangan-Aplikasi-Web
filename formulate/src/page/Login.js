@@ -28,8 +28,13 @@ export const Login = () => {
         localStorage.setItem("loggedInStatus", 'true');
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("id", response.data.id);  
+        localStorage.setItem("email", response.data.email);
+        localStorage.setItem("address", response.data.address);
+        localStorage.setItem("phone_number", response.data.phone_number);
+        localStorage.setItem("username", response.data.username);
+        
 
-        navigate("/home");
+        navigate("/profile");
       } else {
         console.log("Login Failed", response.data);
         alert("Wrong password or ID");
@@ -119,3 +124,4 @@ export const Login = () => {
     </div>
   );
 };
+

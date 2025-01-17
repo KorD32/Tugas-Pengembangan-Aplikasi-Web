@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
+import React, { useEffect, useState } from "react";
 import { HeaderHome } from "../component/HeaderHome";
 import "../style/profile.css";
 import { TextField, Button, IconButton, Drawer, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
@@ -8,20 +7,16 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import AccountBalance from "@mui/icons-material/AccountBalance";
 import History from "@mui/icons-material/History";
 import Settings from "@mui/icons-material/Settings";
+import SaveIcon from "@mui/icons-material/Save"; 
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import { Footer } from "../component/FooterPart";
-import { FooterCr } from "../component/FooterCr";
+import { useNavigate } from "react-router-dom";
+
 
 export const Profile = () => {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     const [user, setUser] = useState({
-        username: "John Doe",
-        email: "john.doe@example.com",
-        nomor_telepon: "081234567890",
         profilePicture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSI6ujefGy4TmYhsTShYP4mU62702wVLlO9g&s", 
-        password: "willyganteng123",
-        alamat: "Jl. Merdeka No. 10, Jakarta",
     });
 
     const [originalUser, setOriginalUser] = useState({ ...user });
@@ -61,9 +56,66 @@ export const Profile = () => {
         }
     };
 
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userId, setUserId] = useState("");
+    const [token, setToken] = useState("");
+    const [userEmail, setEmail] = useState("")
+    const [userAddress, setAddress] = useState("")
+    const [userPhone_number, setPhone_number] = useState("")
+    const [userName, setUserName] = useState("")
+
+
+    useEffect(() => {
+        const loggedIn = localStorage.getItem("loggedInStatus");
+        if (loggedIn === "true") {
+            setIsLoggedIn(true);
+            const storedUserId = localStorage.getItem("id");
+            const storedToken = localStorage.getItem("token");
+            const storedUserName = localStorage.getItem("username")
+            const storedEmail = localStorage.getItem("email")
+            const storedPhone_number = localStorage.getItem("phone_number")
+            const storedAddress = localStorage.getItem("address")
+
+            setUserId(storedUserId);
+            setToken(storedToken);
+            setUserName(storedUserName)
+            setEmail(storedEmail)
+            setPhone_number(storedPhone_number)
+            setAddress(storedAddress)
+
+
+        } else {
+            setIsLoggedIn(false);
+            setUserId("");
+            setToken("");
+            setUserName("")
+            setEmail("")
+            setPhone_number("")
+            setAddress("")
+
+        }
+    }, []);
+
     const handleLogout = () => {
-        alert("Logged out!");
-        navigate("/"); 
+        localStorage.removeItem("loggedInStatus");
+        localStorage.removeItem("id");
+        localStorage.removeItem("token");
+        localStorage.removeItem("username")
+        localStorage.removeItem("email")
+        localStorage.removeItem("phone_number")
+        localStorage.removeItem("address")
+
+        setIsLoggedIn(false);
+        setUserId("");
+        setToken("");
+        setUserName("")
+        setEmail("")
+        setPhone_number("")
+        setAddress("")
+
+        navigate("/login");
+
+
     };
 
     return (
@@ -113,7 +165,7 @@ export const Profile = () => {
                             <div className="user-input">
                                 <TextField
                                     variant="outlined"
-                                    value={user.username}
+                                    value={userName}
                                     onChange={(e) => handleNameChange("username", e.target.value)}
                                     className="text-input"
                                     disabled={!isEditable.username}
@@ -130,7 +182,7 @@ export const Profile = () => {
                             <div className="user-input">
                                 <TextField
                                     variant="outlined"
-                                    value={user.email}
+                                    value={userEmail}
                                     onChange={(e) => handleNameChange("email", e.target.value)}
                                     className="text-input"
                                     disabled={!isEditable.email}
@@ -144,7 +196,7 @@ export const Profile = () => {
                             <div className="user-input">
                                 <TextField
                                     variant="outlined"
-                                    value={user.password}
+                                    value="replace nanti"
                                     onChange={(e) => handleNameChange("password", e.target.value)}
                                     className="text-input"
                                     disabled={!isEditable.password}
@@ -159,7 +211,7 @@ export const Profile = () => {
                             <div className="user-input">
                                 <TextField
                                     variant="outlined"
-                                    value={user.nomor_telepon}
+                                    value={userPhone_number}
                                     onChange={(e) => handleNameChange("nomor_telepon", e.target.value)}
                                     className="text-input"
                                     disabled={!isEditable.nomor_telepon}
@@ -176,7 +228,7 @@ export const Profile = () => {
                             <div className="user-input">
                                 <TextField
                                     variant="outlined"
-                                    value={user.alamat}
+                                    value={userAddress}
                                     onChange={(e) => handleNameChange("alamat", e.target.value)}
                                     className="text-input"
                                     disabled={!isEditable.alamat}
@@ -190,6 +242,7 @@ export const Profile = () => {
                         </div>
                         <div className="profile-actions">
                             <button className="save-button" onClick={handleSave}>
+                                <SaveIcon style={{ marginRight: "8px" }} />
                                 Save
                             </button>
                             <button className="logout-button" onClick={handleLogout}>
@@ -200,10 +253,6 @@ export const Profile = () => {
                     </div>
                 </div>
             </div>
-            <footer>
-                <Footer/>
-                <FooterCr/>
-            </footer>
         </div>
     );
 };

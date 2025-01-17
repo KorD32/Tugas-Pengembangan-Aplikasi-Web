@@ -26,6 +26,12 @@ async function login(req, res) {
         message: "Login success",
         id: user.id,
         token: token,
+        username: user.username,
+        email: user.email,
+        address: user.address,
+        phone_number: user.phone_number,
+
+
       });
     } catch (error) {
       console.error("Error during login:", error);
