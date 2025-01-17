@@ -3,13 +3,16 @@ import "../style/register.css";
 import { HeaderDesktop } from "../component/HeaderDesktop";
 import { Footer } from "../component/FooterPart";
 import { FooterCr } from "../component/FooterCr";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
-    phone: "",
+    phone_number: "",
     address: "",
   });
 
@@ -17,6 +20,8 @@ const Register = () => {
     email: "",
     password: "",
   });
+  
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,7 +40,7 @@ const Register = () => {
     return password.length >= 6;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateEmail(formData.email)) {
@@ -53,16 +58,26 @@ const Register = () => {
       }));
       return;
     }
+    
+    //Backend
+    try {
+      const response = await axios.post("http://localhost:3000/web/users/register", formData);
+      if (response.status === 201) {
+        console.log("Register Berhasil", response.data);
+        alert("Register Berhasil");
+        navigate("/login");
+      }
+    } catch (error) {
+      console.error("Register Gagal",error);
+      alert("Register Gagal");
+    }
+    //Backend
 
     setError({
       email: "",
       password: "",
     });
 
-    const isConfirmed = window.confirm("Apakah data yang Anda isi sudah benar?");
-    if (isConfirmed) {
-      console.log("Form Data Submitted:", formData);
-    }
   };
 
   return (
@@ -74,11 +89,11 @@ const Register = () => {
         <h2 className="register-title">Daftar dengan Email</h2>
         <form onSubmit={handleSubmit}>
           <div className="input-container">
-            <label className="label">Name</label>
+            <label className="label">Username</label>
             <input
               type="text"
-              name="name"
-              value={formData.name}
+              name="username"
+              value={formData.username}
               onChange={handleChange}
               required
             />
@@ -109,8 +124,8 @@ const Register = () => {
             <label className="label">Phone</label>
             <input
               type="tel"
-              name="phone"
-              value={formData.phone}
+              name="phone_number"
+              value={formData.phone_number}
               onChange={handleChange}
               required
             />
