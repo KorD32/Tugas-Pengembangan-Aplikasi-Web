@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom"; 
 import { HeaderHome } from "../component/HeaderHome";
 import "../style/profile.css";
 import { TextField, Button, IconButton, Drawer, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
@@ -13,7 +13,7 @@ import { Footer } from "../component/FooterPart";
 import { FooterCr } from "../component/FooterCr";
 
 export const Profile = () => {
-    const navigate = useNavigate(); // Initialize useNavigate
+    const navigate = useNavigate(); 
 
     const [user, setUser] = useState({
         username: "John Doe",
@@ -63,7 +63,7 @@ export const Profile = () => {
 
     const handleLogout = () => {
         alert("Logged out!");
-        navigate("/"); // Redirect to dashboard
+        navigate("/"); 
     };
 
     return (

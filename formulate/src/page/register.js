@@ -114,7 +114,7 @@ const Register = () => {
                 type="submit"
                 fullWidth
                 variant="contained"
-                className="register-button" // Menggunakan kelas dari CSS
+                className="register-button" 
               >
                 Register
               </Button>

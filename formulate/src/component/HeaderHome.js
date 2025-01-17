@@ -28,7 +28,8 @@ export const HeaderHome = () => {
                                 </InputAdornment>
                             ),
                             style: {
-                                borderRadius: '20px',
+                                borderRadius: '15px',
+                                height: "45px",
                                 width: isFocused ? '300px' : '200px',
                                 transition: 'width 0.3s ease-in-out',
                             },

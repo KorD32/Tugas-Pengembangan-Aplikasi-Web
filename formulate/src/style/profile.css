@@ -1,25 +1,21 @@
 .profile-page {
-    padding-top: 40px;
+    padding: 20px 0;
     min-height: 100vh;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: flex-start;
 }
 
 .profile .nav-hamburger {
     position: fixed;
-    top: 100px;  
+    top: 100px;
     left: 0;
     margin-left: 5px;
 }
 
 .profile .nav-hamburger .MuiIconButton-root {
-    border-radius: 5px;
+    border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.profile-title {
-    margin-bottom: 30px;
 }
 
 .profile-title .text {
@@ -28,11 +24,11 @@
 
 .profile-container {
     background: white;
-    border-radius: 12px; 
+    border-radius: 12px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-    padding: 30px;
+    padding: 30px 40px;
     width: 80%;
-    transition: box-shadow 0.3s;
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 .profile-header {
@@ -40,42 +36,40 @@
 }
 
 .profile-picture {
-    width: 180px; 
+    width: 180px;
     height: 180px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid rgba(0, 0, 0, 0.3); 
+    border: 2px solid rgba(0, 0, 0, 0.3);
     display: block;
-    margin: 0 auto; 
-    transition: transform 0.3s; 
+    margin: 40px auto;
+    transition: transform 0.3s ease-in-out;
+    position: relative; /* Dibutuhkan untuk before/after */
+}
+
+.profile-picture::before,
+.profile-picture::after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-picture:hover::before,
+.profile-picture:hover::after {
+    opacity: 1;
 }
 
 .profile-picture:hover {
     transform: scale(1.10);
 }
 
-
-.profile-actions {
-    display: flex;
-    justify-content: space-between;
-}
-
-.informasi .user-input {
-    width: 60%;
-}
-
-.edit-button{
-    color: white;
-    border: none;
-    width: 15%;
-    border-radius: 5px;
-    padding: 12px 25px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-}
-.informasi .edit-button button { 
-    width: 100%;
-}
 .informasi {
     display: flex;
     justify-content: space-between;
@@ -83,22 +77,54 @@
     font-size: 16px;
     align-items: center;
 }
-.informasi .title { 
+
+.informasi .title {
     width: 20%;
 }
+
+.informasi .user-input {
+    width: 60%;
+}
+
+.informasi .edit-button {
+    color: white;
+    border: none;
+    width: 15%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.informasi .edit-button button {
+    width: 66%;
+    padding: 10px;
+}
+
 .text-input {
     width: 100%;
-    padding: 12px 10px; 
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
     font-size: 16px;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.text-input.email, .text-input.password {
-    border: none; 
-    background-color: #f4f4f4;
+.text-input input {
+    height: 45px;
+    padding: 0 10px;
+    border: 1px solid #ddd;
 }
+
+.text-input.email, .text-input.password {
+    background-color: #f4f4f4;
+    border: none;
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
 .save-button, .logout-button {
     border: none;
     border-radius: 8px;
@@ -115,7 +141,7 @@
 .logout-button {
     background-color: black;
     color: white;
-    border: 1px solid rgba(0, 0, 0, 0.2); 
+    border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
@@ -155,10 +181,6 @@
     opacity: 1;
 }
 
-.profile-actions {
-    margin-top: 40px;
-}
-
 @media (max-width: 768px) {
     .profile-container {
         max-width: 100%;
@@ -167,7 +189,7 @@
 
     .text-input {
         width: 85%;
-        padding: 10px; 
+        padding: 10px;
     }
 
     .title {
@@ -175,14 +197,10 @@
     }
 
     .profile-name {
-        font-size: 22px; 
+        font-size: 22px;
     }
 
     .profile-bio {
-        font-size: 14px; 
-    }
-
-    .profile .nav-hamburger {
-        top: 70px; 
+        font-size: 14px;
     }
 }
