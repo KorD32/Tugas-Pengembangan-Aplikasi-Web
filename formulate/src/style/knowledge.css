@@ -85,14 +85,14 @@
 
 @media (max-width: 768px) {
     .knowledge-card {
-        width: 100%;  /* Card menempati 100% lebar layar pada perangkat mobile */
+        width: 100%;  
         height: auto;
     }
 
     .knowledge-slide {
         flex-direction: column;
         padding: 15px 0;
-        gap: 15px;  /* Mengurangi jarak antar card */
+        gap: 15px;  
     }
 }
 
@@ -102,6 +102,6 @@
     }
 
     .knowledge-card {
-        padding: 20px;  /* Memberikan ruang lebih pada card */
+        padding: 20px;  
     }
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Popover, List, ListItem, ListItemText } from '@mui/material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import Notifications from '../data/Notifications'; // Adjust the path as necessary
+import Notifications from '../data/Notifications'; 
 import "../style/headerhome.css";
 
 const Notification = () => {
