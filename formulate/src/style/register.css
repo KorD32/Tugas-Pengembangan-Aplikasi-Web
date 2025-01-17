@@ -1,0 +1,23 @@
+.register-container {
+    min-height: 100vh;
+  }
+  
+  .register-box {
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .register-button {
+    color: #000000;
+    border: 1px solid #000000;
+    transition: background-color 0.3s;
+  }
+  
+
+  input[type="text"], input[type="email"], input[type="password"], input[type="tel"], textarea {
+    color: #000000;
+  }
+  
+  

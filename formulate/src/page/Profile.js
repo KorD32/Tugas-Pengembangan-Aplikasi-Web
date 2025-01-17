@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { HeaderHome } from "../component/HeaderHome";
 import "../style/profile.css";
 import { TextField, Button, IconButton, Drawer, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
@@ -7,10 +8,13 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import AccountBalance from "@mui/icons-material/AccountBalance";
 import History from "@mui/icons-material/History";
 import Settings from "@mui/icons-material/Settings";
-import SaveIcon from "@mui/icons-material/Save"; // Save Icon
-import ExitToAppIcon from "@mui/icons-material/ExitToApp"; // Logout Icon
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import { Footer } from "../component/FooterPart";
+import { FooterCr } from "../component/FooterCr";
 
 export const Profile = () => {
+    const navigate = useNavigate(); // Initialize useNavigate
+
     const [user, setUser] = useState({
         username: "John Doe",
         email: "john.doe@example.com",
@@ -55,6 +59,11 @@ export const Profile = () => {
             });
             alert("Profile saved!");
         }
+    };
+
+    const handleLogout = () => {
+        alert("Logged out!");
+        navigate("/"); // Redirect to dashboard
     };
 
     return (
@@ -181,10 +190,9 @@ export const Profile = () => {
                         </div>
                         <div className="profile-actions">
                             <button className="save-button" onClick={handleSave}>
-                                <SaveIcon style={{ marginRight: "8px" }} />
                                 Save
                             </button>
-                            <button className="logout-button" onClick={() => alert('Logged out!')}>
+                            <button className="logout-button" onClick={handleLogout}>
                                 <ExitToAppIcon style={{ marginRight: "8px" }} />
                                 Logout
                             </button>
@@ -192,6 +200,10 @@ export const Profile = () => {
                     </div>
                 </div>
             </div>
+            <footer>
+                <Footer/>
+                <FooterCr/>
+            </footer>
         </div>
     );
 };
