@@ -1,23 +1,114 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .register-container {
-    min-height: 100vh;
-  }
-  
-  .register-box {
-    padding: 20px;
-    margin-top: 40px;
-    border-radius: 8px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-  }
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2%;
+  color: black;
+}
 
-  .register-button {
-    color: #000000;
-    border: 1px solid #000000;
-    transition: background-color 0.3s;
-  }
-  
+.register-box {
+  width: 100%;
+  max-width: 370px;
+  padding: 20px 30px;
+  margin: 20px 0;
+  background-color: #fff;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
 
-  input[type="text"], input[type="email"], input[type="password"], input[type="tel"], textarea {
-    color: #000000;
-  }
-  
-  
+.register-title {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.input-container {
+  margin-bottom: 10px;
+}
+
+.label {
+  margin-bottom: 4px;
+  font-size: small;
+  display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 12px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  outline: none;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  height: 35px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
+  border-color: #000;
+  background-color: #f1f1f1;
+}
+
+.register-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color: black; 
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.register-button:hover {
+  background-color: #444;
+  transform: scale(1.05);
+}
+
+.register-button:focus {
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 40px;
+  max-height: 120px;
+  font-size: 14px;
+}
+
+.terms-text {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.terms-text a {
+  font-weight: bold;
+  font-size: 12px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.terms-text a:hover {
+  color: #333;
+  text-decoration: underline;
+}

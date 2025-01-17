@@ -1,15 +1,5 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  Container,
-  TextField,
-  Typography,
-  Grid,
-} from "@mui/material";
-
-// Mengimpor file CSS eksternal
-import '../style/register.css';
+import "../style/register.css";
 import { HeaderDesktop } from "../component/HeaderDesktop";
 import { Footer } from "../component/FooterPart";
 import { FooterCr } from "../component/FooterCr";
@@ -23,6 +13,11 @@ const Register = () => {
     address: "",
   });
 
+  const [error, setError] = useState({
+    email: "",
+    password: "",
+  });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -31,101 +26,116 @@ const Register = () => {
     });
   };
 
+  const validateEmail = (email) => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
+  };
+
+  const validatePassword = (password) => {
+    return password.length >= 6;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
+
+    if (!validateEmail(formData.email)) {
+      setError((prev) => ({
+        ...prev,
+        email: "Email tidak valid",
+      }));
+      return;
+    }
+
+    if (!validatePassword(formData.password)) {
+      setError((prev) => ({
+        ...prev,
+        password: "Password harus memiliki minimal 6 karakter",
+      }));
+      return;
+    }
+
+    setError({
+      email: "",
+      password: "",
+    });
+
+    const isConfirmed = window.confirm("Apakah data yang Anda isi sudah benar?");
+    if (isConfirmed) {
+      console.log("Form Data Submitted:", formData);
+    }
   };
 
   return (
     <section className="register-container">
-        <div>
-            <HeaderDesktop/>
-        </div>
-        <Container maxWidth="sm">
-            <Box className="register-box">
-                <Typography
-                    variant="h4"
-                    color="text.primary"
-                    align="center"
-                    gutterBottom
-                >
-                    Register
-                </Typography>
-            <form onSubmit={handleSubmit}>
-                <Grid container spacing={2}>
-                <Grid item xs={12}>
-                    <TextField
-                        fullWidth
-                        label="Name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        variant="outlined"
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        fullWidth
-                        label="Email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        variant="outlined"
-                        type="email"
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        fullWidth
-                        label="Password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        variant="outlined"
-                        type="password"
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        fullWidth
-                        label="Phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        variant="outlined"
-                        type="tel"
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                  fullWidth
-                  label="Address"
-                  name="address"
-                  value={formData.address}
-                  onChange={handleChange}
-                  variant="outlined"
-                  multiline
-                  rows={3}
-                />
-              </Grid>
-            </Grid>
-            <Box mt={3}>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                className="register-button" 
-              >
-                Register
-              </Button>
-            </Box>
-          </form>
-        </Box>
-      </Container>
-        <footer>
-            <Footer/>
-            <FooterCr/>
-        </footer>
+      <div>
+        <HeaderDesktop />
+      </div>
+      <div className="register-box">
+        <h2 className="register-title">Daftar dengan Email</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="input-container">
+            <label className="label">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="input-container">
+            <label className="label">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            {error.email && <div className="error-message">{error.email}</div>}
+          </div>
+          <div className="input-container">
+            <label className="label">Password</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+            {error.password && <div className="error-message">{error.password}</div>}
+          </div>
+          <div className="input-container">
+            <label className="label">Phone</label>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="input-container">
+            <label className="label">Address</label>
+            <textarea
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit" className="register-button">
+            Register
+          </button>
+        </form>
+        <p className="terms-text">
+          Dengan mengklik Daftar, Anda menyetujui <a href="/terms" className="terms-link">Syarat</a> dan <a href="/terms" className="terms-link">ketentuan</a> kami.
+        </p>
+      </div>
+      <footer>
+        <Footer />
+        <FooterCr />
+      </footer>
     </section>
   );
 };

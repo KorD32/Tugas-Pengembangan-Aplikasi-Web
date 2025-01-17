@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../style/loginpage.css";
 import { HeaderDesktop } from "../component/HeaderDesktop";
 import { Footer } from "../component/FooterPart";
@@ -112,7 +112,7 @@ export const Login = () => {
           </div>
           <div className="create-account">
             <p>
-              Belum punya akun? <a href="create-account">Buat Akun Yuk!</a>
+              Belum punya akun? <Link to = "/register/">Buat Akun Yuk!</Link>
             </p>
           </div>
         </section>
