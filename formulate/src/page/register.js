@@ -5,6 +5,7 @@ import { Footer } from "../component/FooterPart";
 import { FooterCr } from "../component/FooterCr";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Button, TextField } from "@mui/material";
 
 
 const Register = () => {
@@ -90,58 +91,76 @@ const Register = () => {
         <form onSubmit={handleSubmit}>
           <div className="input-container">
             <label className="label">Username</label>
-            <input
+            <TextField
+              variant="outlined"
               type="text"
               name="username"
               value={formData.username}
               onChange={handleChange}
               required
+              fullWidth
             />
           </div>
           <div className="input-container">
             <label className="label">Email</label>
-            <input
+            <TextField
+              variant="outlined"
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               required
+              fullWidth
+              error={!!error.email}
+              helperText={error.email}
             />
-            {error.email && <div className="error-message">{error.email}</div>}
           </div>
           <div className="input-container">
             <label className="label">Password</label>
-            <input
+            <TextField
+              variant="outlined"
               type="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
               required
+              fullWidth
+              error={!!error.password}
+              helperText={error.password}
             />
-            {error.password && <div className="error-message">{error.password}</div>}
           </div>
           <div className="input-container">
             <label className="label">Phone</label>
-            <input
+            <TextField
+              variant="outlined"
               type="tel"
               name="phone_number"
               value={formData.phone_number}
               onChange={handleChange}
               required
+              fullWidth
             />
           </div>
           <div className="input-container">
             <label className="label">Address</label>
-            <textarea
+            <TextField
+              variant="outlined"
               name="address"
               value={formData.address}
               onChange={handleChange}
               required
+              fullWidth
+              multiline
+              rows={4}
             />
           </div>
-          <button type="submit" className="register-button">
+          <Button type="submit" variant="contained" color="primary" className="register-button" fullWidth
+          sx={{
+            backgroundColor: "black",
+            fontWeight: "bold"
+          }}>
             Register
-          </button>
+          </Button>
         </form>
         <p className="terms-text">
           Dengan mengklik Daftar, Anda menyetujui <a href="/terms" className="terms-link">Syarat</a> dan <a href="/terms" className="terms-link">ketentuan</a> kami.

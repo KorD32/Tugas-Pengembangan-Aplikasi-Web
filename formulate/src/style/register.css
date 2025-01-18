@@ -17,7 +17,7 @@ body {
 
 .register-box {
   width: 100%;
-  max-width: 370px;
+  max-width: 500px;
   padding: 20px 30px;
   margin: 20px 0;
   background-color: #fff;
@@ -41,30 +41,7 @@ body {
   display: block;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="tel"],
-textarea {
-  width: 100%;
-  padding: 10px;
-  font-size: 12px;
-  border: 2px solid #ccc;
-  border-radius: 6px;
-  background-color: #f9f9f9;
-  outline: none;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
-  height: 35px;
-}
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="tel"]:focus,
-textarea:focus {
-  border-color: #000;
-  background-color: #f1f1f1;
-}
 
 .register-button {
   width: 100%;
