@@ -42,7 +42,7 @@
       try {
         const { id } = req.params;
     
-        // Ambil detail pengguna berdasarkan ID
+        
         const user = await usersModel.userDetailByID(id);
     
         if (!user) {

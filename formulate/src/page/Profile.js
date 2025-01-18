@@ -12,12 +12,19 @@ import SaveIcon from "@mui/icons-material/Save";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { Footer } from "../component/FooterPart";
 import { FooterCr } from "../component/FooterCr";
+import axios from "axios";
 
 export const Profile = () => {
     const navigate = useNavigate();
 
     const [user, setUser] = useState({
-        profilePicture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSI6ujefGy4TmYhsTShYP4mU62702wVLlO9g&s", 
+        id: "",
+        username: "",
+        email: "",
+        phone_number: "",
+        address: "",
+        token: "",
+        profilePicture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSI6ujefGy4TmYhsTShYP4mU62702wVLlO9g&s",
     });
 
     const [originalUser, setOriginalUser] = useState({ ...user });
@@ -25,91 +32,110 @@ export const Profile = () => {
     const [isEditable, setIsEditable] = useState({
         username: false,
         email: false,
-        nomor_telepon: false,
-        password: false,
-        alamat: false,
+        phone_number: false,
+        address: false,
+    });
+
+    const [passwords, setPasswords] = useState({
+        oldPassword: "",
+        newPassword: "",
     });
 
     const [drawerOpen, setDrawerOpen] = useState(false);
+
+    useEffect(() => {
+        const loggedIn = localStorage.getItem("loggedInStatus");
+        if (loggedIn === "true") {
+            const storedUser = {
+                id: localStorage.getItem("id"),
+                token: localStorage.getItem("token"),
+                username: localStorage.getItem("username"),
+                email: localStorage.getItem("email"),
+                phone_number: localStorage.getItem("phone_number"),
+                address: localStorage.getItem("address"),
+            };
+
+            setUser(storedUser);
+            setOriginalUser(storedUser);
+        } else {
+            navigate("/login");
+        }
+    }, [navigate]);
+
+    const handleEditToggle = (field) => {
+        if (isEditable[field]) {
+            setUser({ ...originalUser }); // Kembalikan data jika dibatalkan
+        }
+        setIsEditable({ ...isEditable, [field]: !isEditable[field] });
+    };
 
     const handleNameChange = (field, value) => {
         setUser({ ...user, [field]: value });
     };
 
-    const handleEditToggle = (field) => {
-        if (isEditable[field]) {
-            setUser({ ...originalUser });
-        }
-        setIsEditable({ ...isEditable, [field]: !isEditable[field] });
-    };
-
-    const handleSave = () => {
-        if (JSON.stringify(user) !== JSON.stringify(originalUser)) {
-            setOriginalUser({ ...user });
+    const handleSave = async () => {
+        try {
+            // Update profil
+            if (JSON.stringify(user) !== JSON.stringify(originalUser)) {
+                const profileResponse = await axios.put(
+                    `http://localhost:3000/web/users/update/${user.id}`,
+                    {
+                        username: user.username,
+                        email: user.email,
+                        phone_number: user.phone_number,
+                        address: user.address,
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${user.token}`,
+                            "Content-Type": "application/json",
+                        },
+                    }
+                );
+    
+                if (profileResponse.status === 200) {
+                    setOriginalUser({ ...user });
+                    alert("Profile updated successfully!");
+                }
+            }
+    
+            // Update password jika ada perubahan
+            if (passwords.oldPassword && passwords.newPassword) {
+                const passwordResponse = await axios.put(
+                    `http://localhost:3000/web/users/update-password/${user.id}`,
+                    {
+                        oldPassword: passwords.oldPassword,
+                        newPassword: passwords.newPassword,
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${user.token}`,
+                            "Content-Type": "application/json",
+                        },
+                    }
+                );
+    
+                if (passwordResponse.status === 200) {
+                    setPasswords({ oldPassword: "", newPassword: "" }); // Reset fields
+                    alert("Password updated successfully!");
+                }
+            }
+    
+            // Reset state edit
             setIsEditable({
                 username: false,
                 email: false,
-                nomor_telepon: false,
-                password: false,
-                alamat: false,
+                phone_number: false,
+                address: false,
             });
-            alert("Profile saved!");
+        } catch (error) {
+            console.error("Error in saving profile or updating password:", error);
+            alert("Failed to save profile or update password. Please try again.");
         }
     };
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [userId, setUserId] = useState("");
-    const [token, setToken] = useState("");
-    const [userEmail, setEmail] = useState("")
-    const [userAddress, setAddress] = useState("")
-    const [userPhone_number, setPhone_number] = useState("")
-    const [userName, setUserName] = useState("")
-
-    useEffect(() => {
-        const loggedIn = localStorage.getItem("loggedInStatus");
-        if (loggedIn === "true") {
-            setIsLoggedIn(true);
-            const storedUserId = localStorage.getItem("id");
-            const storedToken = localStorage.getItem("token");
-            const storedUserName = localStorage.getItem("username")
-            const storedEmail = localStorage.getItem("email")
-            const storedPhone_number = localStorage.getItem("phone_number")
-            const storedAddress = localStorage.getItem("address")
-
-            setUserId(storedUserId);
-            setToken(storedToken);
-            setUserName(storedUserName)
-            setEmail(storedEmail)
-            setPhone_number(storedPhone_number)
-            setAddress(storedAddress)
-        } else {
-            setIsLoggedIn(false);
-            setUserId("");
-            setToken("");
-            setUserName("")
-            setEmail("")
-            setPhone_number("")
-            setAddress("")
-        }
-    }, []);
-
     const handleLogout = () => {
-        localStorage.removeItem("loggedInStatus");
-        localStorage.removeItem("id");
-        localStorage.removeItem("token");
-        localStorage.removeItem("username")
-        localStorage.removeItem("email")
-        localStorage.removeItem("phone_number")
-        localStorage.removeItem("address")
-
-        setIsLoggedIn(false);
-        setUserId("");
-        setToken("");
-        setUserName("")
-        setEmail("")
-        setPhone_number("")
-        setAddress("")
-
+        localStorage.clear();
         navigate("/login");
     };
 
@@ -160,7 +186,7 @@ export const Profile = () => {
                             <div className="user-input">
                                 <TextField
                                     variant="outlined"
-                                    value={userName}
+                                    value={user.username}
                                     onChange={(e) => handleNameChange("username", e.target.value)}
                                     className="text-input"
                                     disabled={!isEditable.username}
@@ -173,32 +199,47 @@ export const Profile = () => {
                             </div>
                         </div>
                         <div className="informasi">
+                            <p className="title">Password:</p>
+                            <div className="user-input">
+                                <TextField
+                                    variant="outlined"
+                                    type="password"
+                                    value={passwords.oldPassword}
+                                    onChange={(e) => setPasswords({ ...passwords, oldPassword: e.target.value })}
+                                    className="text-input"
+                                />
+                            </div>
+                            <div className="edit-button"></div>
+                        </div>
+                        <div className="informasi">
+                            <p className="title">New Password:</p>
+                            <div className="user-input">
+                                <TextField
+                                    variant="outlined"
+                                    type="password"
+                                    value={passwords.newPassword}
+                                    onChange={(e) => setPasswords({ ...passwords, newPassword: e.target.value })}
+                                    className="text-input"
+                                />
+                            </div>
+                            <div className="edit-button"></div>
+                        </div>
+                        
+                        <div className="informasi">
                             <p className="title">Email:</p>
                             <div className="user-input">
                                 <TextField
                                     variant="outlined"
-                                    value={userEmail}
+                                    value={user.email}
                                     onChange={(e) => handleNameChange("email", e.target.value)}
                                     className="text-input"
                                     disabled={!isEditable.email}
                                 />
                             </div>
                             <div className="edit-button">
-                            </div>
-                        </div>
-                        <div className="informasi">
-                            <p className="title">Password:</p>
-                            <div className="user-input">
-                                <TextField
-                                    variant="outlined"
-                                    value="replace nanti"
-                                    onChange={(e) => handleNameChange("password", e.target.value)}
-                                    className="text-input"
-                                    disabled={!isEditable.password}
-                                    type={isEditable.password ? "text" : "password"} 
-                                />
-                            </div>
-                            <div className="edit-button">
+                                <Button onClick={() => handleEditToggle("email")}>
+                                    {isEditable.email ? "Cancel" : "Edit"}
+                                </Button>
                             </div>
                         </div>
                         <div className="informasi">
@@ -206,15 +247,15 @@ export const Profile = () => {
                             <div className="user-input">
                                 <TextField
                                     variant="outlined"
-                                    value={userPhone_number}
-                                    onChange={(e) => handleNameChange("nomor_telepon", e.target.value)}
+                                    value={user.phone_number}
+                                    onChange={(e) => handleNameChange("phone_number", e.target.value)}
                                     className="text-input"
-                                    disabled={!isEditable.nomor_telepon}
+                                    disabled={!isEditable.phone_number}
                                 />
                             </div>
                             <div className="edit-button">
-                                <Button onClick={() => handleEditToggle("nomor_telepon")}>
-                                    {isEditable.nomor_telepon ? "Cancel" : "Edit"}
+                                <Button onClick={() => handleEditToggle("phone_number")}>
+                                    {isEditable.phone_number ? "Cancel" : "Edit"}
                                 </Button>
                             </div>
                         </div>
@@ -223,15 +264,15 @@ export const Profile = () => {
                             <div className="user-input">
                                 <TextField
                                     variant="outlined"
-                                    value={userAddress}
-                                    onChange={(e) => handleNameChange("alamat", e.target.value)}
+                                    value={user.address}
+                                    onChange={(e) => handleNameChange("address", e.target.value)}
                                     className="text-input"
-                                    disabled={!isEditable.alamat}
+                                    disabled={!isEditable.address}
                                 />
                             </div>
                             <div className="edit-button">
-                                <Button onClick={() => handleEditToggle("alamat")}>
-                                    {isEditable.alamat ? "Cancel" : "Edit"}
+                                <Button onClick={() => handleEditToggle("address")}>
+                                    {isEditable.address ? "Cancel" : "Edit"}
                                 </Button>
                             </div>
                         </div>

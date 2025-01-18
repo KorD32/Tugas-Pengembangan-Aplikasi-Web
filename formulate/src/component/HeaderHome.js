@@ -27,11 +27,22 @@ export const HeaderHome = () => {
                                     <SearchIcon />
                                 </InputAdornment>
                             ),
-                            style: {
-                                borderRadius: '15px',
-                                height: "45px",
-                                width: isFocused ? '300px' : '200px',
-                                transition: 'width 0.3s ease-in-out',
+                        }}
+                        sx={{
+                            "& .MuiOutlinedInput-root": {
+                                borderRadius: "15px", 
+                                transition: "width 0.3s ease-in-out",
+                                width: isFocused ? "300px" : "200px", 
+                                height: "45px", 
+                                "& fieldset": {
+                                    borderColor: "#ccc", 
+                                },
+                                "&:hover fieldset": {
+                                    borderColor: "#999", 
+                                },
+                                "&.Mui-focused fieldset": {
+                                    borderColor: "#333", 
+                                },
                             },
                         }}
                     />
