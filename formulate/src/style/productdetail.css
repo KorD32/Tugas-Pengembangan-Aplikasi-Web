@@ -160,7 +160,6 @@
   }
   
   @media (max-width: 768px) {
-    /* Responsive layout untuk ukuran layar kecil */
     .product-main {
       flex-direction: column;
       align-items: center;

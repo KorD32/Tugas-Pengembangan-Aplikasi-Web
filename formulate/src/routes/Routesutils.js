@@ -15,7 +15,6 @@ function Routesutils() {
             <Route path="/profile/" element={<Profile />} />
             <Route path="/register/" element={<Register/>}/>
             <Route path="/productdetail/" element={<ProductDetail />} />
-
         </Routes>
     );
 }

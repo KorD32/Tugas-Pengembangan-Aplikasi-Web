@@ -1,68 +1,74 @@
 const products = [
     {
-        id: 1, 
-        cover: "https://i.imgur.com/PNaW9VE.jpg", 
-        title: "SOMETHINC", 
-        description: "Marine Collagen 10% + Ginseng Root", 
-        category: "serum", 
-        price: 139000
+        id: 1,
+        name: "SOMETHINC Marine Collagen 10% + Ginseng Root",
+        price: "Rp. 139.000",
+        description: "Serum dengan Marine Collagen 10% dan Ginseng Root untuk merawat kulit.",
+        rating: 4.5,
+        imageUrl: "https://i.imgur.com/PNaW9VE.jpg",
+        thumbnails: [
+            "https://skintific.com/cdn/shop/files/my-11134207-23010-6kqqugsxz8lvec.jpg?v=1713502577&width=180",
+            "https://skintific.com/cdn/shop/files/my-11134207-7r98u-lre5drtsqj1z87.jpg?v=1713502577&width=180",
+            "https://skintific.com/cdn/shop/files/my-11134207-7r98v-lpol88x6hoive7.jpg?v=1713502577&width=180",
+            "https://skintific.com/cdn/shop/files/my-11134207-7r98r-lpol88x6evdz7e.jpg?v=1713502577&width=180"
+        ]
     },
     {
-        id: 2, 
-        cover: "https://i.imgur.com/PNaW9VE.jpg", 
-        title: "SOMETHINC", 
-        description: "Marine Collagen 2% + Ginseng Root", 
-        category: "serum", 
-        price: 139000
+        id: 2,
+        name: "SOMETHINC Marine Collagen 2% + Ginseng Root",
+        price: "Rp. 139.000",
+        description: "Serum dengan Marine Collagen 2% dan Ginseng Root untuk merawat kulit.",
+        rating: 4.5,
+        imageUrl: "https://i.imgur.com/PNaW9VE.jpg",
+        thumbnails: [
+            "https://skintific.com/cdn/shop/files/my-11134207-23010-6kqqugsxz8lvec.jpg?v=1713502577&width=180",
+            "https://skintific.com/cdn/shop/files/my-11134207-7r98u-lre5drtsqj1z87.jpg?v=1713502577&width=180",
+            "https://skintific.com/cdn/shop/files/my-11134207-7r98v-lpol88x6hoive7.jpg?v=1713502577&width=180",
+            "https://skintific.com/cdn/shop/files/my-11134207-7r98r-lpol88x6evdz7e.jpg?v=1713502577&width=180"
+        ]
     },
     {
-        id: 3, 
-        cover: "https://i.imgur.com/PNaW9VE.jpg", 
-        title: "SOMETHINC", 
-        description: "Marine Collagen 3% + Ginseng Root", 
-        category: "serum", 
-        price: 139000
+        id: 3,
+        name: "SOMETHINC Marine Collagen 3% + Ginseng Root",
+        price: "Rp. 139.000",
+        description: "Serum dengan Marine Collagen 3% dan Ginseng Root untuk merawat kulit.",
+        rating: 4.5,                                                          
+        imageUrl: "https://i.imgur.com/PNaW9VE.jpg",
+        thumbnails: [
+            "https://skintific.com/cdn/shop/files/my-11134207-23010-6kqqugsxz8lvec.jpg?v=1713502577&width=180",
+            "https://skintific.com/cdn/shop/files/my-11134207-7r98u-lre5drtsqj1z87.jpg?v=1713502577&width=180",
+            "https://skintific.com/cdn/shop/files/my-11134207-7r98v-lpol88x6hoive7.jpg?v=1713502577&width=180",
+            "https://skintific.com/cdn/shop/files/my-11134207-7r98r-lpol88x6evdz7e.jpg?v=1713502577&width=180"
+        ]
     },
     {
-        id: 4, 
-        cover: "https://i.imgur.com/PNaW9VE.jpg", 
-        title: "SOMETHINC", 
-        description: "Marine Collagen 4% + Ginseng Root", 
-        category: "serum", 
-        price: 139000
+        id: 4,
+        name: "SOMETHINC Marine Collagen 4% + Ginseng Root",
+        price: "Rp. 139.000",
+        description: "Serum dengan Marine Collagen 4% dan Ginseng Root untuk merawat kulit.",
+        rating: 4.5,
+        imageUrl: "https://i.imgur.com/PNaW9VE.jpg",
+        thumbnails: [
+            "https://skintific.com/cdn/shop/files/my-11134207-23010-6kqqugsxz8lvec.jpg?v=1713502577&width=180",
+            "https://skintific.com/cdn/shop/files/my-11134207-7r98u-lre5drtsqj1z87.jpg?v=1713502577&width=180",
+            "https://skintific.com/cdn/shop/files/my-11134207-7r98v-lpol88x6hoive7.jpg?v=1713502577&width=180",
+            "https://skintific.com/cdn/shop/files/my-11134207-7r98r-lpol88x6evdz7e.jpg?v=1713502577&width=180"
+        ]
     },
     {
-        id: 5, 
-        cover: "https://i.imgur.com/PNaW9VE.jpg", 
-        title: "SOMETHINC", 
-        description: "Marine Collagen 5% + Ginseng Root", 
-        category: "serum", 
-        price: 139000
-    },
-    {
-        id: 6, 
-        cover: "https://i.imgur.com/PNaW9VE.jpg", 
-        title: "SOMETHINC", 
-        description: "Marine Collagen 6% + Ginseng Root", 
-        category: "serum", 
-        price: 139000
-    },
-    {
-        id: 7, 
-        cover: "https://i.imgur.com/PNaW9VE.jpg", 
-        title: "SOMETHINC", 
-        description: "Marine Collagen 7% + Ginseng Root", 
-        category: "serum", 
-        price: 139000
-    },
-    {
-        id: 8, 
-        cover: "https://i.imgur.com/PNaW9VE.jpg", 
-        title: "SOMETHINC", 
-        description: "Marine Collagen 8% + Ginseng Root", 
-        category: "serum", 
-        price: 139000
+        id: 5,
+        name: "SOMETHINC Marine Collagen 4% + Ginseng Root",
+        price: "Rp. 139.000",
+        description: "Serum dengan Marine Collagen 4% dan Ginseng Root untuk merawat kulit.",
+        rating: 4.5,
+        imageUrl: "https://i.imgur.com/PNaW9VE.jpg",
+        thumbnails: [
+            "https://skintific.com/cdn/shop/files/my-11134207-23010-6kqqugsxz8lvec.jpg?v=1713502577&width=180",
+            "https://skintific.com/cdn/shop/files/my-11134207-7r98u-lre5drtsqj1z87.jpg?v=1713502577&width=180",
+            "https://skintific.com/cdn/shop/files/my-11134207-7r98v-lpol88x6hoive7.jpg?v=1713502577&width=180",
+            "https://skintific.com/cdn/shop/files/my-11134207-7r98r-lpol88x6evdz7e.jpg?v=1713502577&width=180"
+        ]
     }
-]
+];
 
 export default products;

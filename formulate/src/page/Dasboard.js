@@ -3,7 +3,7 @@ import { FooterCr } from "../component/FooterCr"
 import { Footer } from "../component/FooterPart"
 import { HeaderDesktop } from "../component/HeaderDesktop"
 import { KnowLedgeList } from "../component/KnowledgeSection"
-import { ListProduct } from "../component/ProductSection"
+import { ListProduct } from "../component/ProductSectiondb"
 import "../style/dashboard.css"
 
 
