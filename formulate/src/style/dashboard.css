@@ -9,6 +9,29 @@ body {
     overflow-x: hidden;
 }
 
+.content-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.product-slider {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 40px 0;
+    align-items: center;
+}
+
+.prev-button, .next-button {
+    font-size: 20px;
+    border: none;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
 .dashboard {
     position: relative;
     display: flex;
@@ -41,11 +64,6 @@ header {
 header.scrolled {
     background-color: rgba(255, 255, 255, 1);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-}
-
-.content-container {
-    width: 100%;
-    overflow: hidden;
 }
 
 .dashboard .section-dashboard-1 {
@@ -102,7 +120,6 @@ header.scrolled {
     }
 }
 
-
 .formulate-plan p {
     margin-top: 15px;
     font-size: 14px;
@@ -113,25 +130,16 @@ header.scrolled {
 footer {
     width: 100%;
     border-radius: 10px;
-    background-color: #F4F5F5;
-    padding: 20px;
-    text-align: center;
-    font-size: 14px;
-    margin-top: 20px;
+    background-color: #cecece;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transform: translateY(20px);
     animation: fadeInFooter 0.4s ease-out forwards; 
-    opacity: 0;
 }
 
 @keyframes fadeInFooter {
     from {
-        opacity: 0;
         transform: translateY(10px); 
     }
     to {
-        opacity: 1;
         transform: translateY(0);
     }
 }
-

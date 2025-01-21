@@ -9,7 +9,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 20px;  /* Mengatur jarak antar card */
+    gap: 20px; 
     padding: 30px 0;
 }
 
@@ -23,31 +23,31 @@
     padding: 15px;
     margin: 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;  /* Menjaga elemen tetap dalam batas card */
+    overflow: hidden; 
 }
 
 .knowledge-card:hover {
-    transform: translateY(-5px);  /* Memberikan efek mengambang */
+    transform: translateY(-5px);  
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .knowledge-card img {
     width: 100%;
-    height: 200px;  /* Menyediakan ruang yang lebih jelas untuk gambar */
+    height: auto;
     object-fit: cover;
     border-radius: 10px;
     transition: transform 0.3s ease;
 }
 
 .knowledge-card:hover img {
-    transform: scale(1.05);  /* Efek zoom pada gambar saat hover */
+    transform: scale(1.05);  
 }
 
 .knowledge-card .title {
     color: #333;
     margin: 10px 0;
     font-weight: bold;
-    font-size: 18px;  /* Memperbesar font judul */
+    font-size: 18px; 
 }
 
 .knowledge-card .description {
@@ -67,18 +67,18 @@
 }
 
 .knowledge-card a:hover {
-    color: #003366;  /* Menambah kontras saat hover */
+    color: #003366;
     text-decoration: underline;
 }
 
 @media (max-width: 1024px) {
     .knowledge-card {
-        width: 48%;  /* Menampilkan dua card per baris pada tablet */
-        height: auto;  /* Menyesuaikan tinggi card */
+        width: 48%;
+        height: auto;
     }
 
     .knowledge-slide {
-        gap: 20px;  /* Mengurangi jarak antar card pada layar lebih kecil */
+        gap: 20px;
         padding: 15px 0;
     }
 }

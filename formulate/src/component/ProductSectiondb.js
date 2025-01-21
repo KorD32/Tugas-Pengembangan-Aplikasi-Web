@@ -1,46 +1,54 @@
-import React, { useState } from 'react';
-import { ProductCard } from "../molecules/ProductCard";
-import products from "../data/Product";
-import "../style/product.css";
+import React, { useState } from "react";
+import ProductCardDb from "../molecules/ProductCardDb"; 
+import productsData from "../data/Product";
+import "../style/productsectiondb.css"
 
-export const ListProduct = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
+export const ListProductDb = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const productsPerPage = 4;
 
-    const nextProduct = () => {
-        if (activeIndex < products.length - 4) {
-            setActiveIndex(activeIndex + 1);
-        } else {
-            setActiveIndex(0);
-        }
-    };
-
-    const prevProduct = () => {
-        if (activeIndex > 0) {
-            setActiveIndex(activeIndex - 1);
-        } else {
-            setActiveIndex(products.length - 4);
-        }
-    };
-
-    const displayedProducts = products.slice(activeIndex, activeIndex + 4);
-
-    return (
-        <section className='product-section-desktop' id="products">
-            <h1>Product</h1>
-            <div className="product-slider">
-                <button className="prev-button" onClick={prevProduct}>❮</button>
-                <div className="product-cards">
-                    {displayedProducts.map(product => (
-                        <ProductCard
-                            key={product.id}
-                            cover={product.cover}
-                            title={product.title}
-                            description={product.description}
-                        />
-                    ))}
-                </div>
-                <button className="next-button" onClick={nextProduct}>❯</button>
-            </div>
-        </section>
+  const nextProduct = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex < productsData.length - productsPerPage
+        ? prevIndex + 1
+        : 0
     );
+  };
+
+  const prevProduct = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex > 0
+        ? prevIndex - 1
+        : productsData.length - productsPerPage
+    );
+  };
+
+  const displayedProducts = productsData.slice(
+    activeIndex,
+    activeIndex + productsPerPage
+  );
+
+  return (
+    <section className="product-section-desktop" id="products">
+      <h1>Product</h1>
+      <div className="product-slider">
+        <button className="prev-button" onClick={prevProduct}>
+          ❮
+        </button>
+        <div className="product-cards">
+          {displayedProducts.map((product) => (
+            <ProductCardDb 
+              key={product.id}
+              imageUrl={product.imageUrl}
+              name={product.name}
+              description={product.description}
+            />
+          ))}
+        </div>
+        <button className="next-button" onClick={nextProduct}>
+          ❯
+        </button>
+      </div>
+    </section>
+  );
 };

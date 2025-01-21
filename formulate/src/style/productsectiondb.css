@@ -1,39 +1,38 @@
 .product-section-desktop {
-    justify-items: center;
-    padding: 2.5rem 2rem;
+    display: flex;
+    padding: 40px;
+    flex-direction: column;
+    align-items: center;
 }
 
 .product-slider {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 40px 0;
     align-items: center;
 }
 
 .prev-button, .next-button {
-    font-size: 20px;
     border: none;
-    transform: translateY(-50%);
     cursor: pointer;
-    z-index: 10;
     border-radius: 50%;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    font-size: 24px; 
 }
+
 .product-cards {
     display: flex;
     gap: 30px;
     justify-content: center;
     flex-wrap: wrap;
-    justify-items: center;
 }
 
 .product-card {
     border: 1px solid #e0e0e0;
-    border-radius: 12px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
     width: 240px;
+    gap: 10px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
@@ -48,20 +47,20 @@
 .product-card img {
     max-width: 80%;
     height: auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
+    border-radius: 10px;
     object-fit: cover;
     transition: transform 0.3s ease;
+    display: block;
+    margin: 0 auto;
 }
+
 
 .product-card:hover img {
     transform: scale(1.1);
 }
 
 .product-card .title {
-    font-size: 18px;
     font-weight: bold;
-    margin-bottom: 6px;
     color: #333;
     text-transform: capitalize;
 }
@@ -69,8 +68,6 @@
 .product-card .description {
     font-size: 14px;
     color: #555;
-    margin-bottom: 12px;
-    line-height: 1.4;
 }
 
 .product-card::before {
@@ -89,12 +86,6 @@
     opacity: 1;
 }
 
-.product-card .price {
-    font-size: 16px;
-    font-weight: bold;
-    color: #28a745;
-}
-
 @media (max-width: 1024px) {
     .product-card {
         width: 220px;
@@ -111,7 +102,7 @@
     }
 
     .prev-button, .next-button {
-        font-size: 18px;
+        font-size: 20px; 
     }
 }
 
@@ -120,11 +111,7 @@
         width: 150px;
     }
 
-    .product-cards {
-        gap: 15px;
-    }
-
     .prev-button, .next-button {
-        font-size: 16px;
+        font-size: 18px; 
     }
 }

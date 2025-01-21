@@ -3,7 +3,7 @@ import { FooterCr } from "../component/FooterCr"
 import { Footer } from "../component/FooterPart"
 import { HeaderDesktop } from "../component/HeaderDesktop"
 import { KnowLedgeList } from "../component/KnowledgeSection"
-import { ListProduct } from "../component/ProductSectiondb"
+import { ListProductDb } from "../component/ProductSectiondb"
 import "../style/dashboard.css"
 
 
@@ -26,7 +26,7 @@ export const Dashboard = () => {
                     </div>
                 </section>
                 <section>
-                    <ListProduct/>
+                    <ListProductDb/>
                 </section>
                 <section >
                     <ListBanner/>
