@@ -1,55 +1,72 @@
 .footer {
-    padding-top: 40px;
+    padding: 40px 20px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 80px;
 }
 
 .footer h3 {
     font-size: 14px;
+    margin-bottom: 10px; 
 }
 
-.footer .section{
+.footer .section {
     width: 50%;
     display: flex;
     justify-content: space-between;
 }
-
-.section .find-us .image-footer { 
-    margin-right: 10px;
-}
-.section .image-footer img {
-    margin-top: 10px;
-    height: auto;
-    width: 20px; 
+.footer .section div {
+    width: 100%;
 }
 
-.footer .section a { 
+.footer .section a {
     font-size: 12px;
     color: black;
     text-decoration: none;
 }
 
-.footer .term-condition, 
-.footer .customer-care, 
-.footer .company-info,
-.footer .find-us{
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.footer .section a:hover {
+    border-bottom: 1px solid black;
 }
 
-.footer li { 
-    margin-top: 10px;
-    font-size: 12px;
+.footer .term-condition,
+.footer .customer-care,
+.footer .company-info,
+.footer .find-us {
+    display: flex;
+    flex-direction: column;
 }
 
 .footer ul {
     list-style-type: none;
+    padding: 0; 
 }
 
-.footer li a:hover { 
-    border-bottom: 1px solid black;
+.footer li {
+    margin-top: 10px;
+    font-size: 12px;
 }
 
+.footer li a {
+    transition: color 0.3s ease;
+}
 
+.footer li a:hover {
+    color: #007bff;
+}
+
+.account-social-media .image-footer{
+    margin-right: 10px;
+}
+
+@media(max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer .section {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

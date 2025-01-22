@@ -1,12 +1,10 @@
 .recommended-products {
     margin: 40px 0;
-
   }
   
   .recommended-products h3 {
     margin-bottom: 20px;
     font-size: 24px;
-    font-weight: bold;
   }
   
   .recommended-items {
@@ -24,7 +22,7 @@
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer; /* Menambahkan kursor pointer untuk interaksi */
+    cursor: pointer; 
   }
   
   .recommended-item:hover {
@@ -33,7 +31,7 @@
   }
   
   .recommended-item:active {
-    transform: scale(0.98); /* Efek saat item ditekan */
+    transform: scale(0.98); 
   }
   
   .recommended-img {
@@ -49,7 +47,9 @@
   .product-card:hover img {
     transform: scale(1.05);
   }
-  
+  .recommended-item h4{
+    padding-top: 10px;
+  }
   .recommended-item p {
     font-size: 16px;
     color: #444;

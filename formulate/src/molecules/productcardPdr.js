@@ -9,7 +9,7 @@ const ProductCardPdr = ({ product, onClick }) => {
         alt={product.name}
         className="recommended-img"
       />
-      <p>{product.name}</p>
+      <h4>{product.name}</h4>
       <p>{product.price}</p>
       <Rating value={product.rating} precision={0.5} readOnly size="small" />
     </div>

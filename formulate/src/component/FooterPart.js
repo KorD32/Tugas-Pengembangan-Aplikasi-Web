@@ -1,67 +1,57 @@
-import React from "react"
-import "../style/footer.css"
+import React from "react";
+import "../style/footer.css";
 
+// Mengimpor ikon dari Material UI
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
-export const Footer = () => { 
-    return ( 
+export const Footer = () => {
+    return (
         <div className="footer">
-            <section className="section"> 
-                <div className="term-condition"> 
+            <section className="section">
+                <div className="term-condition">
+                    <h3>Syarat & Ketentuan</h3>
                     <ul>
-                        <h3>Syarat & ketentuan</h3>
-                        <li>
-                            <a href="delivery">Kebijakan pengiriman</a>
-                        </li>
-                        <li>
-                            <a href="privacy">Kebijakan Pribadi</a>
-                        </li>
-                        <li>
-                            <a href="service">Persyaratan layanan</a>
-                        </li>
-                        <li>
-                            <a href="Return-exchange">Kebijakan pengembalian dan penukaran</a>
-                        </li>
-                        <li>
-                            <a href="tracking-order">pelacakan pesanan</a>
-                        </li>
+                        <li><a href="delivery">Kebijakan Pengiriman</a></li>
+                        <li><a href="privacy">Kebijakan Pribadi</a></li>
+                        <li><a href="service">Persyaratan Layanan</a></li>
+                        <li><a href="Return-exchange">Kebijakan Pengembalian dan Penukaran</a></li>
+                        <li><a href="tracking-order">Pelacakan Pesanan</a></li>
                     </ul>
                 </div>
-                <div className="customer-care"> 
+                <div className="customer-care">
+                    <h3>Informasi</h3>
                     <ul>
-                        <h3>Informasi</h3>
-                        <li>
-                            <a href="about-us">Tentang kami</a>
-                        </li>
-                        <li>
-                            <a href="contact">Hubungi kami</a>
-                        </li>
-                        <li>
-                            <a href="faq">FAQs</a>
-                        </li>
+                        <li><a href="about-us">Tentang Kami</a></li>
+                        <li><a href="contact">Hubungi Kami</a></li>
+                        <li><a href="faq">FAQs</a></li>
                     </ul>
                 </div>
             </section>
             <section className="section">
                 <div className="company-info">
+                    <h3>Layanan Pelanggan</h3>
                     <ul>
-                        <h3>Layanan pelanggan</h3>
-                        <li>
-                            Whatsapp
-                        </li>
-                        <li>
-                            <a href="contact">081223203492</a>
-                        </li>
+                        <li>Whatsapp</li>
+                        <li><a href="contact">081223203492</a></li>
                     </ul>
                 </div>
                 <div className="find-us">
-                    <div>
-                        <h3>bagaimana cara menemukan kami</h3>
-                        <a className="image-footer" href="facebook"><img src="https://img.icons8.com/?size=100&id=435&format=png&color=000000" alt="facebook"/></a>
-                        <a className="image-footer" href="instagram"><img src="https://img.icons8.com/?size=100&id=32292&format=png&color=000000" alt="instagram"/></a>
-                        <a className="image-footer" href="youtube"><img src="https://img.icons8.com/?size=100&id=37325&format=png&color=000000" alt="youtube"/></a>
+                    <h3>Bagaimana Cara Menemukan Kami</h3>
+                    <div className="account-social-media">
+                        <a className="image-footer" href="https://www.facebook.com">
+                            <FacebookIcon sx={{ fontSize: 25 }} />
+                        </a>
+                        <a className="image-footer" href="https://www.instagram.com">
+                            <InstagramIcon sx={{ fontSize: 25 }} />
+                        </a>
+                        <a className="image-footer" href="https://www.youtube.com">
+                            <YouTubeIcon sx={{ fontSize: 25 }} />
+                        </a>
                     </div>
                 </div>
             </section>
         </div>
-    )
-}
+    );
+};

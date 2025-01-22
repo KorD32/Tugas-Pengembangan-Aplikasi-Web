@@ -1,6 +1,6 @@
 import React from "react";
 import ProductCardPdr from "../molecules/productcardPdr";
-import "../style/recommendedproductpd.css"; // Pastikan sudah ada CSS yang benar
+import "../style/recommendedproductpd.css"; 
 
 const RecommendedProducts = ({ products, onRecommendationClick }) => {
   return (
