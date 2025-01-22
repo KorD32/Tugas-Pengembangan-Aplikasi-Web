@@ -6,7 +6,6 @@ const ProductCardDb = ({ imageUrl, name, description, price, rating, stock }) =>
       <img src={imageUrl} alt={name} />
       <h4 className="title">{name}</h4>
       <p className="description">{description}</p>
-      <div className="price">{price}</div>
     </div>
   );
 };
