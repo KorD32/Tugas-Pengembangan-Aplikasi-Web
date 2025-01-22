@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProductCardPd from "../molecules/ProductCardPd";
 import Rating from "@mui/material/Rating";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-import "../style/productsectionpd.css"
+import "../style/productsectionpd.css";
 
 const RatingStars = ({ rating }) => (
   <div className="rating">
@@ -16,6 +16,17 @@ const ProductListPd = ({ product }) => {
   const [currentProduct, setCurrentProduct] = useState(product);
   const [mainImage, setMainImage] = useState(product.imageUrl);
   const [quantity, setQuantity] = useState(1);
+  const [imageIndex, setImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const nextIndex = (imageIndex + 1) % currentProduct.thumbnails.length;
+      setMainImage(currentProduct.thumbnails[nextIndex]);
+      setImageIndex(nextIndex);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [currentProduct, imageIndex]);
 
   const increaseQuantity = () => {
     if (quantity < currentProduct.stock) setQuantity(quantity + 1);
@@ -33,6 +44,7 @@ const ProductListPd = ({ product }) => {
     setCurrentProduct(newProduct);
     setMainImage(newProduct.imageUrl);
     setQuantity(1);
+    setImageIndex(0);
   };
 
   return (
@@ -55,11 +67,9 @@ const ProductListPd = ({ product }) => {
       </div>
 
       <div className="product-info">
-        <h2>{currentProduct.name}</h2>        
-        <p className="price">{currentProduct.price}</p>  
-
+        <h2>{currentProduct.name}</h2>
+        <p className="price">{currentProduct.price}</p>
         <p className="description">{currentProduct.description}</p>
-
         <RatingStars rating={currentProduct.rating} />
 
         <div className="quantity-selector">

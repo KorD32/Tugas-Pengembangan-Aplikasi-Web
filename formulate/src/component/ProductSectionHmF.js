@@ -1,33 +1,32 @@
 import React, { useState } from "react";
 import ProductCardDb from "../molecules/ProductCardDb"; 
 import "../style/productsectiondb.css"
-import ProductFashion from "../data/ProductFashion";
+import Products from "../data/Product";
 
-
-export const HomeProduct2 = () => {
+export const ListProductHmF = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const productsPerPage = 4;
 
+  const filteredProducts = Products.filter(
+    (product) => product.category && product.category.toLowerCase() === "outfit"
+  );
+
   const nextProduct = () => {
     setActiveIndex((prevIndex) =>
-      prevIndex < ProductFashion.length - productsPerPage
-        ? prevIndex + 1
-        : 0
+      prevIndex < filteredProducts.length - 1 ? prevIndex + 1 : 0
     );
   };
 
   const prevProduct = () => {
     setActiveIndex((prevIndex) =>
-      prevIndex > 0
-        ? prevIndex - 1
-        : ProductFashion.length - productsPerPage
+      prevIndex > 0 ? prevIndex - 1 : filteredProducts.length - 1
     );
   };
 
-  const displayedProducts = ProductFashion.slice(
-    activeIndex,
-    activeIndex + productsPerPage
-  );
+  const displayedProducts = [
+    ...filteredProducts.slice(activeIndex),
+    ...filteredProducts.slice(0, activeIndex)
+  ].slice(0, productsPerPage);
 
   return (
     <section className="product-section-desktop" id="products">

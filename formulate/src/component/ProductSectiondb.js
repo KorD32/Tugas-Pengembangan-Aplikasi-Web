@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ProductCardDb from "../molecules/ProductCardDb"; 
 import productsData from "../data/Product";
-import "../style/productsectiondb.css"
+import "../style/productsectiondb.css";
 
 export const ListProductDb = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -9,24 +9,21 @@ export const ListProductDb = () => {
 
   const nextProduct = () => {
     setActiveIndex((prevIndex) =>
-      prevIndex < productsData.length - productsPerPage
-        ? prevIndex + 1
-        : 0
+      (prevIndex + 1) % productsData.length
     );
   };
 
   const prevProduct = () => {
     setActiveIndex((prevIndex) =>
-      prevIndex > 0
-        ? prevIndex - 1
-        : productsData.length - productsPerPage
+      (prevIndex - 1 + productsData.length) % productsData.length
     );
   };
 
-  const displayedProducts = productsData.slice(
-    activeIndex,
-    activeIndex + productsPerPage
-  );
+  // Menggunakan sirkular untuk produk yang ditampilkan
+  const displayedProducts = [
+    ...productsData.slice(activeIndex),
+    ...productsData.slice(0, activeIndex)
+  ].slice(0, productsPerPage);
 
   return (
     <section className="product-section-desktop" id="products">
@@ -41,7 +38,7 @@ export const ListProductDb = () => {
               key={product.id}
               imageUrl={product.imageUrl}
               name={product.name}
-              description={product.description}
+              hideDetails={true} // Menambahkan prop untuk menyembunyikan detail
             />
           ))}
         </div>

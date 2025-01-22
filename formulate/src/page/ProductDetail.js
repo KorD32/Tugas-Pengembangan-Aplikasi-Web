@@ -27,8 +27,8 @@ const ProductDetail = () => {
         onRecommendationClick={handleRecommendationClick}
       />
       <footer>
-        <Footer/>
-        <FooterCr/>
+        <Footer />
+        <FooterCr />
       </footer>
     </div>
   );

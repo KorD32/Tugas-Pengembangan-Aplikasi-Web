@@ -2,6 +2,14 @@ import React from "react";
 import { Rating } from "@mui/material";
 
 const ProductCardPdr = ({ product, onClick }) => {
+  const formatRupiah = (price) => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
+    }).format(price);
+  };
+
   return (
     <div className="recommended-item" onClick={() => onClick(product)}>
       <img
@@ -10,7 +18,7 @@ const ProductCardPdr = ({ product, onClick }) => {
         className="recommended-img"
       />
       <h4>{product.name}</h4>
-      <p>{product.price}</p>
+      <p>{formatRupiah(product.price)}</p>
       <Rating value={product.rating} precision={0.5} readOnly size="small" />
     </div>
   );
