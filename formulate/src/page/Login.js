@@ -54,7 +54,7 @@ export const Login = () => {
           <form className="login-forum">
             <h2>Masuk ke akun mu</h2>
             <div className="input-container">
-              <label className="label">Email</label>
+              <label className="label">ID</label>
               <input
                 className="input"
                 type="email"

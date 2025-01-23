@@ -8,18 +8,16 @@ import { Footer } from "../component/FooterPart";
 import { FooterCr } from "../component/FooterCr";
 
 const ProductDetail = () => {
-  const { id } = useParams(); // Ambil ID produk dari URL
-  const [product, setProduct] = useState(null); // Produk utama
-  const [recommendedProducts, setRecommendedProducts] = useState([]); // Produk rekomendasi
+  const { id } = useParams(); 
+  const [product, setProduct] = useState(null); 
+  const [recommendedProducts, setRecommendedProducts] = useState([]);
 
-  // Fetch produk utama
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/web/products/id/${id}`);
         setProduct(response.data);
 
-        // Setelah mendapatkan produk utama, fetch produk rekomendasi
         fetchRecommendedProducts(response.data.category, id);
       } catch (error) {
         console.error("Error fetching product detail:", error);
@@ -41,7 +39,7 @@ const ProductDetail = () => {
   }, [id]);
 
   if (!product) {
-    return <p>Loading...</p>; // Tampilkan loading jika data belum tersedia
+    return <p>Loading...</p>; 
   }
 
   return (

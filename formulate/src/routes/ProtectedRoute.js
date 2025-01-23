@@ -1,15 +1,14 @@
-/* import React from "react";
+import React from "react";
 import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
-    const isLoggedIn = localStorage.getItem("loggedInStatus") === "true";
+  const isLoggedIn = localStorage.getItem("loggedInStatus") === "true";
 
-    if (!isLoggedIn) {
-        alert("Harus login dulu"); // Tampilkan alert jika belum login
-        return <Navigate to="/login" />;
-    }
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
 
-    return children;
+  return children;
 };
 
-export default ProtectedRoute; */
+export default ProtectedRoute;

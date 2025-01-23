@@ -123,10 +123,32 @@ async function updatePassword(req, res) {
   }
 }
 
+async function deleteUser(req, res) {
+  const { id } = req.params; // Ambil user ID dari parameter URL
+
+  if (!id) {
+    return res.status(400).json({ message: "User ID is required" });
+  }
+
+  try {
+    const [result] = await usersModel.deleteUserByID(id); // Pastikan deleteUserByID mengembalikan array
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json({ message: "User deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
 module.exports = {
   users,
   userDetailByID,
   registerUser,
   updateUser,
   updatePassword,
+  deleteUser
 };

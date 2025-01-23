@@ -1,29 +1,63 @@
-import { useState } from 'react';
-import "../style/Checkout.css"
+import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
+import "../style/Checkout.css";
+import { HeaderHome } from "../component/HeaderHome";
 
 const Checkout = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const product = location.state?.product; 
+  const userId = localStorage.getItem("id"); 
 
-  const [open, setOpen] = useState(false)
-  const popUp = ()=>{
-    setOpen(true)
-    alert("Payment Successfully")
-  }
+  const handleCheckout = async () => {
+    if (!userId) {
+      alert("User tidak ditemukan, silakan login ulang.");
+      navigate("/login");
+      return;
+    }
 
+    if (!product || !product.name) {
+      alert("Produk tidak valid. Silakan pilih produk lagi.");
+      navigate("/home");
+      return;
+    }
+
+    try {
+      const orderData = {
+        user_id: userId,
+        product_id: product.id,
+        product_name: product.name, 
+        price: product.price,
+        quantity: 1, 
+        status: "pending",
+      };
+
+      const response = await axios.post("http://localhost:3000/web/orderdetail/create", orderData);
+      console.log("Response data:", response.data);
+     
+      if (response.status === 201) {
+        alert("Pembayaran berhasil!");
+        navigate("/history");
+      } else {
+        throw new Error("Gagal membuat pesanan. Silakan coba lagi.");
+      }
+    } catch (error) {
+      console.error("Error during checkout:", error);
+      alert("Terjadi kesalahan saat melakukan pembayaran. Silakan coba lagi.");
+    }
+  };
 
   return (
-    <div className="container">
-      <h2 className="header">Ringkasan Pemesanan</h2>
+    <div className="container-checkout">
+      <HeaderHome />
+      <h2 className="header-checkout">Ringkasan Pemesanan</h2>
 
-      <div className="product">
-        <img 
-          src="https://images.tokopedia.net/img/cache/500-square/product-1/2020/6/3/8470268/8470268_84a28e0b-5c4f-4de5-afe0-2b9ae19d9b72_700_700" 
-          alt="KAHF Face Wash" 
-          className="product-image" 
-        />
-        <div className="product-details">
-          <h3>KAHF</h3>
-          <p>Face Wash Skin Energizing & Brightening 100ml</p>
-          <p>⭐ 4.9 | Penilaian Produk (26,1RB)</p>
+      <div className="product-checkout">
+        <img src={product?.imageUrl || "not-available.jpeg"} alt={product?.name || "Produk"} className="product-image-checkout" />
+        <div className="product-details-checkout">
+          <h3>{product?.name || "Unknown Product"}</h3>
+          <p>{product?.description || "No description available"}</p>
+          <p>⭐ {product?.rating || 0}</p>
         </div>
       </div>
 
@@ -31,32 +65,17 @@ const Checkout = () => {
         <h3>Detail Transaksi</h3>
         <div className="detail-row">
           <span>Item Total</span>
-          <span>Rp50.000</span>
-        </div>
-        <div className="detail-row">
-          <span>Shipping</span>
-          <span>Rp27.000</span>
-        </div>
-        <div className="detail-row">
-          <span>Sales Tax</span>
-          <span>Rp5.000</span>
+          <span>Rp{product?.price?.toLocaleString("id-ID") || 0}</span>
         </div>
         <div className="detail-row total">
           <span>Total Bayar</span>
-          <span>Rp82.000</span>
+          <span>Rp{product?.price?.toLocaleString("id-ID") || 0}</span>
         </div>
       </div>
 
-      <div className="payment-methods">
-        <h3>Metode Pembayaran</h3>
-        <button className="payment-button dana">Dana</button>
-        <button className="payment-button ovo">Ovo</button>
-        <button className="payment-button gopay">Gopay</button>
-        <button className="payment-button shopeepay">ShopeePay</button>
-        <button className="payment-button bank">Transfer Bank</button>
-      </div>
-
-      <button className="pay-button" onClick={popUp}>Selesaikan Pembayaran Anda</button>
+      <button className="pay-button" onClick={handleCheckout}>
+        Selesaikan Pembayaran Anda
+      </button>
     </div>
   );
 };

@@ -20,7 +20,7 @@ const ProductCard = ({
   };
 
   const handleCardClick = () => {
-    navigate(`/productdetail/${id}`); // Navigasi ke halaman detail
+    navigate(`/productdetail/${id}`); 
   };
 
   return (

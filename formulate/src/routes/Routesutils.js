@@ -1,3 +1,4 @@
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Dashboard } from "../page/Dasboard";
 import { Login } from "../page/Login";
@@ -7,46 +8,59 @@ import ProductDetail from "../page/ProductDetail";
 import Register from "../page/register";
 import { HomePage } from "../page/HomePage";
 import History from "../page/History";
-import ProtectedRoute from "./ProtectedRoute";
+import Checkout from "../page/Checkout";
+import ProtectedRoute from "./ProtectedRoute"; // Import komponen ProtectedRoute
 
-function Routesutils() { 
-    return (
-        <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="*" element={<NotFound />} />
-            <Route path="/login/" element={<Login />} />
-            <Route path="/register/" element={<Register />} />
-            <Route path="/home/" element={<HomePage />} />
-            <Route path="/history" element={<History /> } />
-            <Route path="/profile/" element={<Profile />} />
-            <Route path="/productdetail/:id" element={<ProductDetail />} />
-            
-           {/* <Route 
-                path="/home/" 
-                element={
-                    <ProtectedRoute>
-                        <HomePage />
-                    </ProtectedRoute>
-                } 
-            />
-            <Route 
-                path="/profile/" 
-                element={
-                    <ProtectedRoute>
-                        <Profile />
-                    </ProtectedRoute>
-                } 
-            />
-            <Route 
-                path="/productdetail/" 
-                element={
-                    <ProtectedRoute>
-                        <ProductDetail />
-                    </ProtectedRoute>
-                } 
-            /> */}
-        </Routes>
-    );
+function Routesutils() {
+  return (
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+      <Route path="*" element={<NotFound />} />
+      <Route path="/login/" element={<Login />} />
+      <Route path="/register/" element={<Register />} />
+
+      <Route
+        path="/home/"
+        element={
+          <ProtectedRoute>
+            <HomePage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/history"
+        element={
+          <ProtectedRoute>
+            <History />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profile/"
+        element={
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/productdetail/:id"
+        element={
+          <ProtectedRoute>
+            <ProductDetail />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/checkout"
+        element={
+          <ProtectedRoute>
+            <Checkout />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
+  );
 }
 
 export default Routesutils;

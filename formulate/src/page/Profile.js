@@ -64,7 +64,7 @@ export const Profile = () => {
 
     const handleEditToggle = (field) => {
         if (isEditable[field]) {
-            setUser({ ...originalUser }); // Kembalikan data jika dibatalkan
+            setUser({ ...originalUser }); 
         }
         setIsEditable({ ...isEditable, [field]: !isEditable[field] });
     };
@@ -137,6 +137,40 @@ export const Profile = () => {
     const handleLogout = () => {
         localStorage.clear();
         navigate("/login");
+    };
+    
+    const handleDeleteAccount = async () => {
+        if (!user.id) {
+            alert("User ID tidak ditemukan. Silakan login ulang.");
+            return;
+        }
+    
+        const confirmDelete = window.confirm(
+            "Apakah Anda yakin ingin menghapus akun Anda? Tindakan ini tidak dapat dibatalkan."
+        );
+    
+        if (!confirmDelete) {
+            return;
+        }
+    
+        try {
+            console.log("Mengirim permintaan penghapusan akun...");
+            const response = await axios.delete(
+                `http://localhost:3000/web/users/delete/${user.id}`
+            );
+            console.log("Respon dari server:", response);
+    
+            if (response.status === 200) {
+                alert("Akun berhasil dihapus.");
+                localStorage.clear(); // Hapus data lokal
+                navigate("/login"); // Kembali ke halaman login
+            } else {
+                alert("Gagal menghapus akun. Silakan coba lagi.");
+            }
+        } catch (error) {
+            console.error("Error deleting account:", error);
+            alert("Terjadi kesalahan saat mencoba menghapus akun Anda.");
+        }
     };
 
     return (
@@ -286,6 +320,9 @@ export const Profile = () => {
                             <button className="logout-button" onClick={handleLogout}>
                                 <ExitToAppIcon style={{ marginRight: "8px" }} />
                                 Logout
+                            </button>
+                            <button className="delete-button" onClick={handleDeleteAccount}>
+                                Delete Account
                             </button>
                         </div>
                     </div>

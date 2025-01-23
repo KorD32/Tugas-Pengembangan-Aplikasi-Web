@@ -69,10 +69,35 @@ async function updatePasswordByID(id, newPassword) {
   return result;
 }
 
+async function deleteUserByID(id) {
+  try {
+    const [orderResult] = await connection.execute(
+      "DELETE FROM orderdetail WHERE user_id = ?",
+      [id]
+    );
+
+    console.log("Order deletion result:", orderResult);
+
+
+    const [userResult] = await connection.execute(
+      "DELETE FROM users WHERE id = ?",
+      [id]
+    );
+
+    console.log("User deletion result:", userResult); 
+
+    return [userResult]; 
+  } catch (error) {
+    console.error("Error in deleteUserByID:", error);
+    throw error;
+  }
+}
+
 module.exports = {
   users,
   userDetailByID,
   createUser,
   updateUserByID,
   updatePasswordByID,
+  deleteUserByID,
 };

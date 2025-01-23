@@ -138,6 +138,10 @@
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
+.add-to-cart-btn {
+    background-color: #f8f9fa;
+}
+
 .buy-btn .add-to-cart-btn:hover {
     transform: scale(1.05);
 }
