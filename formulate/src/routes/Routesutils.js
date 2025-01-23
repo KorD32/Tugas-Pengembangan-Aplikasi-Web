@@ -15,9 +15,11 @@ function Routesutils() {
             <Route path="*" element={<NotFound />} />
             <Route path="/login/" element={<Login />} />
             <Route path="/register/" element={<Register />} />
+            <Route path="/home/" element={<HomePage />} />
+            <Route path="/profile/" element={<Profile />} />
+            <Route path="/productdetail/" element={<ProductDetail />} />
             
-            {/* Rute yang dilindungi */}
-            <Route 
+           {/* <Route 
                 path="/home/" 
                 element={
                     <ProtectedRoute>
@@ -40,7 +42,7 @@ function Routesutils() {
                         <ProductDetail />
                     </ProtectedRoute>
                 } 
-            />
+            /> */}
         </Routes>
     );
 }
