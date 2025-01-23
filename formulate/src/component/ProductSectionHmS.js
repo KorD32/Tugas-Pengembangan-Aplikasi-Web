@@ -41,7 +41,7 @@ export const ListProductHmS = () => {
                 key={product.id}
                 imageUrl={product.imageUrl}
                 name={product.name}
-                description={product.description}
+                price={product.price}
               />
             ))
           ) : (

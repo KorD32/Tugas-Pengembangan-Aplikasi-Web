@@ -4,8 +4,7 @@ import React, { useState } from "react";
 const ProductCard = ({
   imageUrl = "not-available.jpeg",
   name = "Unnamed Product",
-  category = "Uncategorized",
-  price = "halo",
+  price = 0,
   thumbnails = [],
   onClick,
 }) => {
@@ -31,7 +30,6 @@ const ProductCard = ({
       </div>
       
       <h4 className="title">{name}</h4>
-      <h5 className="category">{category}</h5>
       
       <div className="price-rating">
         <p className="price">{formatRupiah(price)}</p>
