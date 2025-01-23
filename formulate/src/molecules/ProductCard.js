@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({
+  id,
   imageUrl = "not-available.jpeg",
   name = "Unnamed Product",
   price = 0,
   thumbnails = [],
-  onClick,
 }) => {
-  const [selectedImage, setSelectedImage] = useState(imageUrl);
+  const navigate = useNavigate();
 
   const formatRupiah = (price) => {
     const parsedPrice = parseFloat(price) || 0;
@@ -19,33 +19,18 @@ const ProductCard = ({
     }).format(parsedPrice);
   };
 
+  const handleCardClick = () => {
+    navigate(`/productdetail/${id}`); // Navigasi ke halaman detail
+  };
+
   return (
-    <div className="product-card" onClick={() => onClick && onClick()}>
+    <div className="product-card" onClick={handleCardClick}>
       <div className="image-section">
-        <img 
-          src={selectedImage} 
-          alt="product cover" 
-          className="cover-image"
-        />
+        <img src={imageUrl} alt="product cover" className="cover-image" />
       </div>
-      
       <h4 className="title">{name}</h4>
-      
       <div className="price-rating">
         <p className="price">{formatRupiah(price)}</p>
-      </div>
-      
-      <div className="thumbnails">
-        {Array.isArray(thumbnails) &&
-          thumbnails.map((thumbnail, index) => (
-            <img 
-              key={index} 
-              src={thumbnail} 
-              alt={`Thumbnail ${index + 1}`} 
-              className="thumbnail-image"
-              onClick={() => setSelectedImage(thumbnail)}
-            />
-          ))}
       </div>
     </div>
   );

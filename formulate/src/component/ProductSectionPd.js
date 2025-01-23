@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ProductCardPd from "../molecules/ProductCardPd";
 import Rating from "@mui/material/Rating";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -13,20 +13,18 @@ const RatingStars = ({ rating }) => (
 );
 
 const ProductListPd = ({ product }) => {
-  const [currentProduct, setCurrentProduct] = useState(product);
-  const [mainImage, setMainImage] = useState(product.imageUrl);
+  const [currentProduct, setCurrentProduct] = useState({
+    name: product?.name || "Unknown Product",
+    imageUrl: product?.imageUrl || "not-available.jpeg",
+    thumbnails: Array.isArray(product?.thumbnails) ? product.thumbnails : [],
+    stock: product?.stock || 0,
+    price: product?.price || 0,
+    rating: product?.rating || 0,
+    description: product?.description || "No description available.",
+  });
+
+  const [mainImage, setMainImage] = useState(currentProduct.imageUrl);
   const [quantity, setQuantity] = useState(1);
-  const [imageIndex, setImageIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const nextIndex = (imageIndex + 1) % currentProduct.thumbnails.length;
-      setMainImage(currentProduct.thumbnails[nextIndex]);
-      setImageIndex(nextIndex);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [currentProduct, imageIndex]);
 
   const increaseQuantity = () => {
     if (quantity < currentProduct.stock) setQuantity(quantity + 1);
@@ -44,7 +42,15 @@ const ProductListPd = ({ product }) => {
     setCurrentProduct(newProduct);
     setMainImage(newProduct.imageUrl);
     setQuantity(1);
-    setImageIndex(0);
+  };
+
+  const formatRupiah = (price) => {
+    const parsedPrice = parseFloat(price) || 0;
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
+    }).format(parsedPrice);
   };
 
   return (
@@ -53,22 +59,25 @@ const ProductListPd = ({ product }) => {
         <div className="main-image">
           <img src={mainImage} alt={currentProduct.name} />
         </div>
-        <div className="thumbnail-images">
-          {currentProduct.thumbnails?.map((src, index) => (
-            <img
-              key={index}
-              src={src}
-              alt={`Thumbnail ${index + 1}`}
-              className="product-thumbnail-img"
-              onClick={() => handleThumbnailClick(src)}
-            />
-          ))}
-        </div>
+        {/* Tampilkan thumbnails hanya jika jumlahnya lebih dari 1 */}
+        {currentProduct.thumbnails.length > 1 && (
+          <div className="thumbnail-images">
+            {currentProduct.thumbnails.map((src, index) => (
+              <img
+                key={index}
+                src={src}
+                alt={`Thumbnail ${index + 1}`}
+                className="product-thumbnail-img"
+                onClick={() => handleThumbnailClick(src)}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="product-info">
         <h2>{currentProduct.name}</h2>
-        <p className="price">{currentProduct.price}</p>
+        <p className="price">{formatRupiah(currentProduct.price)}</p>
         <p className="description">{currentProduct.description}</p>
         <RatingStars rating={currentProduct.rating} />
 

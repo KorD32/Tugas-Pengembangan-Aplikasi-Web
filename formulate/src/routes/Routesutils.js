@@ -19,7 +19,7 @@ function Routesutils() {
             <Route path="/home/" element={<HomePage />} />
             <Route path="/history" element={<History /> } />
             <Route path="/profile/" element={<Profile />} />
-            <Route path="/productdetail/" element={<ProductDetail />} />
+            <Route path="/productdetail/:id" element={<ProductDetail />} />
             
            {/* <Route 
                 path="/home/" 

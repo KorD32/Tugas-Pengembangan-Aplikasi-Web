@@ -7,21 +7,24 @@ const ProductCardPdr = ({ product, onClick }) => {
       style: "currency",
       currency: "IDR",
       minimumFractionDigits: 0,
-    }).format(price);
+    }).format(price || 0); // Pastikan nilai default jika `price` kosong
   };
 
   return (
-    <div className="recommended-item" onClick={() => onClick(product)}>
+    <div
+      className="recommended-item"
+      onClick={() => onClick && onClick(product)} // Pastikan `onClick` ada sebelum dipanggil
+    >
       <div className="image-section">
         <img
-          src={product.imageUrl}
-          alt={product.name}
+          src={product.imageUrl || "not-available.jpeg"} // Fallback jika `imageUrl` kosong
+          alt={product.name || "Unnamed Product"} // Fallback jika `name` kosong
           className="recommended-img"
         />
       </div>
-      <h4>{product.name}</h4>
+      <h4>{product.name || "Unnamed Product"}</h4>
       <p>{formatRupiah(product.price)}</p>
-      <Rating value={product.rating} precision={0.5} readOnly size="small" />
+      <Rating value={product.rating || 0} precision={0.5} readOnly size="small" />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import ProductCard from "../molecules/ProductCard";
 import "../style/productsection.css";
 
@@ -7,11 +8,12 @@ export const ListProductHmS = () => {
   const [products, setProducts] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const productsPerPage = 4;
+  const navigate = useNavigate(); // Untuk navigasi
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/web/products/skincare");
+        const response = await axios.get("http://localhost:3000/web/products/category/skincare");
         if (response.data && response.data.length > 0) {
           setProducts(response.data);
         } else {
@@ -53,10 +55,12 @@ export const ListProductHmS = () => {
             displayedProducts.map((product) => (
               <ProductCard
                 key={product.id}
+                id={product.id}
                 imageUrl={product.imageUrl || (product.thumbnails && product.thumbnails[0])}
                 name={product.name}
                 description={product.description}
                 price={product.price}
+                onClick={() => navigate(`/productdetail/${product.id}`)} // Navigasi ke detail
               />
             ))
           ) : (
