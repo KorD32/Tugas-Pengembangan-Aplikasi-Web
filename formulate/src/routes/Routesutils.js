@@ -6,6 +6,7 @@ import { Profile } from "../page/Profile";
 import ProductDetail from "../page/ProductDetail";
 import Register from "../page/register";
 import { HomePage } from "../page/HomePage";
+import History from "../page/History";
 import ProtectedRoute from "./ProtectedRoute";
 
 function Routesutils() { 
@@ -16,6 +17,7 @@ function Routesutils() {
             <Route path="/login/" element={<Login />} />
             <Route path="/register/" element={<Register />} />
             <Route path="/home/" element={<HomePage />} />
+            <Route path="/history" element={<History /> } />
             <Route path="/profile/" element={<Profile />} />
             <Route path="/productdetail/" element={<ProductDetail />} />
             
