@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ProductCardDb from "../molecules/ProductCardDb"; 
-import "../style/productsectiondb.css"
+import ProductCard from "../molecules/ProductCard";
+import "../style/productsection.css"
 import Products from "../data/Product";
 
 export const ListProductHmF = () => {
@@ -36,7 +36,7 @@ export const ListProductHmF = () => {
         </button>
         <div className="product-cards">
           {displayedProducts.map((product) => (
-            <ProductCardDb 
+            <ProductCard
               key={product.id}
               imageUrl={product.imageUrl}
               name={product.name}

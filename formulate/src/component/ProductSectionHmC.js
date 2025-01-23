@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
-import ProductCardDb from "../molecules/ProductCardDb"; 
-import "../style/productsectiondb.css";
+import ProductCard from "../molecules/ProductCard";
+import "../style/productsection.css";
 import Products from "../data/Product";
 
 export const ListProductHmC = () => {
@@ -19,20 +19,18 @@ export const ListProductHmC = () => {
 
   const startTouch = useRef({ startX: 0, startY: 0, isTwoFingers: false });
 
-  // Handle the touch start event
   const handleTouchStart = (e) => {
     if (e.touches.length === 1) {
-      // Single finger movement: track for cursor movement
+
       startTouch.current.isTwoFingers = false;
     } else if (e.touches.length === 2) {
-      // Two-finger movement: track for slider swipe
+
       startTouch.current.isTwoFingers = true;
       startTouch.current.startX = e.touches[0].clientX;
       startTouch.current.startY = e.touches[0].clientY;
     }
   };
 
-  // Handle the touch move event
   const handleTouchMove = (e) => {
     if (startTouch.current.isTwoFingers && e.touches.length === 2) {
       const diffX = e.touches[0].clientX - startTouch.current.startX;
@@ -40,11 +38,11 @@ export const ListProductHmC = () => {
 
       if (Math.abs(diffX) > Math.abs(diffY)) {
         if (diffX > 50) {
-          // Swipe right
+
           prevProduct();
           startTouch.current.startX = e.touches[0].clientX; // Reset start position after moving
         } else if (diffX < -50) {
-          // Swipe left
+
           nextProduct();
           startTouch.current.startX = e.touches[0].clientX; // Reset start position after moving
         }
@@ -85,7 +83,7 @@ export const ListProductHmC = () => {
         <div className="product-cards">
           {displayedProducts.length > 0 ? (
             displayedProducts.map((product) => (
-              <ProductCardDb 
+              <ProductCard
                 key={product.id}
                 imageUrl={product.imageUrl}
                 name={product.name}
