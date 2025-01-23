@@ -34,7 +34,7 @@ export const Login = () => {
         localStorage.setItem("username", response.data.username);
         
 
-        navigate("/profile");
+        navigate("/home");
       } else {
         console.log("Login Failed", response.data);
         alert("Wrong password or ID");
