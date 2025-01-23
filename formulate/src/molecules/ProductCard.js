@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-const ProductCardDb = ({
+const ProductCard = ({
   imageUrl = "not-available.jpeg",
   name = "Unnamed Product",
   category = "Uncategorized",
@@ -11,8 +11,17 @@ const ProductCardDb = ({
 }) => {
   const [selectedImage, setSelectedImage] = useState(imageUrl);
 
+  const formatRupiah = (price) => {
+    const parsedPrice = parseFloat(price) || 0;
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
+    }).format(parsedPrice);
+  };
+
   return (
-    <div className="product-card-dashboard" onClick={() => onClick && onClick()}>
+    <div className="product-card" onClick={() => onClick && onClick()}>
       <div className="image-section">
         <img 
           src={selectedImage} 
@@ -22,7 +31,11 @@ const ProductCardDb = ({
       </div>
       
       <h4 className="title">{name}</h4>
+      <h5 className="category">{category}</h5>
       
+      <div className="price-rating">
+        <p className="price">{formatRupiah(price)}</p>
+      </div>
       
       <div className="thumbnails">
         {Array.isArray(thumbnails) &&
@@ -40,4 +53,4 @@ const ProductCardDb = ({
   );
 };
 
-export default ProductCardDb;
+export default ProductCard;

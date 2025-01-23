@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ProductCardDb from "../molecules/ProductCardDb"; 
 import productsData from "../data/Product";
-import "../style/productsection.css";
+import "../style/productsectiondb.css";
 
 export const ListProductDb = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -19,7 +19,6 @@ export const ListProductDb = () => {
     );
   };
 
-  // Menggunakan sirkular untuk produk yang ditampilkan
   const displayedProducts = [
     ...productsData.slice(activeIndex),
     ...productsData.slice(0, activeIndex)
@@ -38,7 +37,7 @@ export const ListProductDb = () => {
               key={product.id}
               imageUrl={product.imageUrl}
               name={product.name}
-              hideDetails={true} // Menambahkan prop untuk menyembunyikan detail
+              hideDetails={true} 
             />
           ))}
         </div>

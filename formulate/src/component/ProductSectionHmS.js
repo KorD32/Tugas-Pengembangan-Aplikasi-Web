@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ProductCardDb from "../molecules/ProductCardDb"; 
+import ProductCard from "../molecules/ProductCard";
 import productsData from "../data/Product";
 import "../style/productsection.css"
 
@@ -37,7 +37,7 @@ export const ListProductHmS = () => {
         <div className="product-cards">
           {displayedProducts.length > 0 ? (
             displayedProducts.map((product) => (
-              <ProductCardDb 
+              <ProductCard 
                 key={product.id}
                 imageUrl={product.imageUrl}
                 name={product.name}
