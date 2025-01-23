@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ProductCardDb from "../molecules/ProductCardDb"; 
 import productsData from "../data/Product";
-import "../style/productsectiondb.css"
+import "../style/productsection.css"
 
 export const ListProductHmS = () => {
   const [activeIndex, setActiveIndex] = useState(0);

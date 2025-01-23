@@ -24,11 +24,13 @@ const ProductCardDb = ({
 
   return (
     <div className="product-card" onClick={() => onClick && onClick()}>
-      <img 
-        src={selectedImage} 
-        alt="product cover" 
-        className="cover-image"
-      />
+      <div className="image-section">
+        <img 
+          src={selectedImage} 
+          alt="product cover" 
+          className="cover-image"
+        />
+      </div>
       
       <h4 className="title">{name}</h4>
       <h5 className="category">{category}</h5>

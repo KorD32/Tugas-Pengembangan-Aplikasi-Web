@@ -12,11 +12,13 @@ const ProductCardPdr = ({ product, onClick }) => {
 
   return (
     <div className="recommended-item" onClick={() => onClick(product)}>
-      <img
-        src={product.imageUrl}
-        alt={product.name}
-        className="recommended-img"
-      />
+      <div className="image-section">
+        <img
+          src={product.imageUrl}
+          alt={product.name}
+          className="recommended-img"
+        />
+      </div>
       <h4>{product.name}</h4>
       <p>{formatRupiah(product.price)}</p>
       <Rating value={product.rating} precision={0.5} readOnly size="small" />

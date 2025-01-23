@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ProductCardDb from "../molecules/ProductCardDb"; 
-import "../style/productsectiondb.css"
+import "../style/productsection.css"
 import Products from "../data/Product";
 
 export const ListProductHmF = () => {

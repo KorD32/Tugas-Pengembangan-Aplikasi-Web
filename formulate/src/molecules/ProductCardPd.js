@@ -23,7 +23,7 @@ const ProductCardPd = ({
     };
 
     return (
-        <div className="product-card" onClick={() => onClick && onClick()}>
+        <div className="product-card-pd" onClick={() => onClick && onClick()}>
             <img 
                 src={selectedImage} 
                 alt="product cover" 
