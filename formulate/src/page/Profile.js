@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HeaderHome } from "../component/HeaderHome";
 import "../style/profile.css";
 import { TextField, Button, IconButton, Drawer, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
@@ -158,10 +158,12 @@ export const Profile = () => {
                                 <ListItemIcon><AccountCircle /></ListItemIcon>
                                 <ListItemText primary="Profile" />
                             </ListItem>
-                            <ListItem button component="a" href="#transaction">
-                                <ListItemIcon><AccountBalance /></ListItemIcon>
-                                <ListItemText primary="Transaction" />
-                            </ListItem>
+                            <Link to="/history">
+                                <ListItem button component="a" href="#transaction">
+                                    <ListItemIcon><AccountBalance /></ListItemIcon>
+                                    <ListItemText primary="Transaction" />
+                                </ListItem>
+                            </Link>
                             <ListItem button component="a" href="#history">
                                 <ListItemIcon><History /></ListItemIcon>
                                 <ListItemText primary="History" />

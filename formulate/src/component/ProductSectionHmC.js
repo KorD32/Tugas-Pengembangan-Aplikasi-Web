@@ -1,91 +1,65 @@
-import React, { useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import ProductCard from "../molecules/ProductCard";
 import "../style/productsection.css";
-import Products from "../data/Product";
 
 export const ListProductHmC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const productsPerPage = 4;
-  const sliderRef = useRef(null);
+  const [products, setProducts] = useState([]); // State untuk menyimpan produk
+  const [activeIndex, setActiveIndex] = useState(0); // Indeks produk yang ditampilkan
+  const productsPerPage = 4; // Jumlah produk per halaman
 
-  const filteredProducts = Products.filter(
-    (product) => product.category?.toLowerCase() === "cosmetic"
-  );
-
-  const displayedProducts = [
-    ...filteredProducts.slice(activeIndex),
-    ...filteredProducts.slice(0, activeIndex)
-  ].slice(0, productsPerPage);
-
-  const startTouch = useRef({ startX: 0, startY: 0, isTwoFingers: false });
-
-  const handleTouchStart = (e) => {
-    if (e.touches.length === 1) {
-
-      startTouch.current.isTwoFingers = false;
-    } else if (e.touches.length === 2) {
-
-      startTouch.current.isTwoFingers = true;
-      startTouch.current.startX = e.touches[0].clientX;
-      startTouch.current.startY = e.touches[0].clientY;
-    }
-  };
-
-  const handleTouchMove = (e) => {
-    if (startTouch.current.isTwoFingers && e.touches.length === 2) {
-      const diffX = e.touches[0].clientX - startTouch.current.startX;
-      const diffY = e.touches[0].clientY - startTouch.current.startY;
-
-      if (Math.abs(diffX) > Math.abs(diffY)) {
-        if (diffX > 50) {
-
-          prevProduct();
-          startTouch.current.startX = e.touches[0].clientX; // Reset start position after moving
-        } else if (diffX < -50) {
-
-          nextProduct();
-          startTouch.current.startX = e.touches[0].clientX; // Reset start position after moving
+  // Fetch data dari API ketika komponen dimount
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/web/products/cosmetic");
+        if (response.data && response.data.length > 0) {
+          setProducts(response.data); // Simpan data produk di state
+        } else {
+          console.warn("No products found in the category 'cosmetic'.");
         }
+      } catch (error) {
+        console.error("Error fetching cosmetic products:", error);
       }
-    }
-  };
+    };
 
-  const handleTouchEnd = () => {
-    startTouch.current.isTwoFingers = false; // Reset when touch ends
-  };
+    fetchProducts();
+  }, []);
 
+  // Fungsi untuk navigasi ke produk berikutnya
   const nextProduct = () => {
     setActiveIndex((prevIndex) =>
-      prevIndex < filteredProducts.length - 1 ? prevIndex + 1 : 0
+      prevIndex < products.length - 1 ? prevIndex + 1 : 0
     );
   };
 
+  // Fungsi untuk navigasi ke produk sebelumnya
   const prevProduct = () => {
     setActiveIndex((prevIndex) =>
-      prevIndex > 0 ? prevIndex - 1 : filteredProducts.length - 1
+      prevIndex > 0 ? prevIndex - 1 : products.length - 1
     );
   };
 
+  // Produk yang akan ditampilkan berdasarkan `activeIndex`
+  const displayedProducts = [
+    ...products.slice(activeIndex),
+    ...products.slice(0, activeIndex),
+  ].slice(0, productsPerPage);
+
+  // Render komponen
   return (
-    <section
-      className="product-section-desktop"
-      id="products"
-      ref={sliderRef}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-    >
+    <section className="product-section-desktop" id="products">
       <div className="product-slider">
         <button className="prev-button" onClick={prevProduct}>
           ❮
         </button>
-
         <div className="product-cards">
+          {/* Jika produk tersedia, tampilkan; jika tidak, tampilkan pesan */}
           {displayedProducts.length > 0 ? (
             displayedProducts.map((product) => (
               <ProductCard
                 key={product.id}
-                imageUrl={product.imageUrl}
+                imageUrl={product.imageUrl || (product.thumbnails && product.thumbnails[0])}
                 name={product.name}
                 description={product.description}
                 price={product.price}
@@ -95,7 +69,6 @@ export const ListProductHmC = () => {
             <p>No cosmetic products available.</p>
           )}
         </div>
-
         <button className="next-button" onClick={nextProduct}>
           ❯
         </button>
