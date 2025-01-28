@@ -4,22 +4,26 @@ import { ListProductHmF } from "../component/ProductSectionHmF";
 import { ListProductHmS } from "../component/ProductSectionHmS";
 import { HeaderHome } from "../component/HeaderHome";
 import { ListBanner } from "../component/BannerSection";
+import "../style/homepage.css"; 
 
 export const HomePage = () => {
   return (
-    <div>
+    <div className="homepage">
       <HeaderHome />
       <ListBanner />
-      <section>
-        <h1 style={{ padding: "20px", marginBottom: "-75px" }}>Skincare</h1>
+
+      <section className="product-category">
+        <h1>Skincare</h1>
         <ListProductHmS />
       </section>
-      <section>
-        <h1 style={{ padding: "20px", marginBottom: "-75px" }}>Cosmetic</h1>
+
+      <section className="product-category">
+        <h1>Cosmetic</h1>
         <ListProductHmC />
       </section>
-      <section>
-        <h1 style={{ padding: "20px", marginBottom: "-75px" }}>Outfit</h1>
+
+      <section className="product-category">
+        <h1>Outfit</h1>
         <ListProductHmF />
       </section>
     </div>

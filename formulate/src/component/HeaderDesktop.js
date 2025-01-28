@@ -11,7 +11,7 @@ export const HeaderDesktop = () => {
             <section>
                 <ul className="nav_desktop">
                     <li>
-                        <Link to="/dashboard">Home</Link> 
+                        <Link to="/">Home</Link> 
                     </li>
                     <li>
                         <Link to="/product">Produk</Link> 
