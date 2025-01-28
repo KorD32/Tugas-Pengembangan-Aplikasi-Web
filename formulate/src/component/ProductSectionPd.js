@@ -48,9 +48,9 @@ const ProductListPd = ({ product }) => {
 
       <div className="product-info">
         <h2>{currentProduct.name}</h2>
+        <RatingStars rating={currentProduct.rating} />
         <p className="price">{formatRupiah(currentProduct.price)}</p>
         <p className="description">{currentProduct.description}</p>
-        <RatingStars rating={currentProduct.rating} />
 
         <div className="buy-btn">
           <button

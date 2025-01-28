@@ -4,6 +4,7 @@
     gap: 30px;
     width: 100%;
     padding: 10px;
+    margin: 20px 0px;
 }
 
 .product-section-hm .product-image {
@@ -15,8 +16,8 @@
 
 .product-image .main-image {
     width: 100%;
-    max-width: 350px;
-    max-height: 350px; 
+    max-width: 400px;
+    max-height: 400px; 
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
@@ -89,8 +90,8 @@
 
 .product-info .price {
     font-weight: bold;
-    font-size: large;
-    color: #d7a903;
+    font-size: 30px;
+    color: black;
 }
 
 .product-info .quantity-selector {
@@ -120,14 +121,14 @@
 }
 
 .product-info .buy-btn {
-    display: flex;
-    justify-content: center;
     gap: 10px;
+    display: flex;
 }
 
 .buy-btn .add-to-cart-btn {
     padding: 15px 20px;
     border: 1px solid black;
+    width: 50%;
     border-radius: 10px;
     font-weight: bold;
     display: flex;
@@ -147,6 +148,7 @@
 }
 
 .buy-btn .buy-now-btn {
+    width: 50%;
     padding: 15px 20px;
     background: black;
     border: none;
