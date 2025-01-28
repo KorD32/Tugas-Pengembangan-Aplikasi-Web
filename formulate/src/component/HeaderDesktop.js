@@ -17,7 +17,7 @@ export const HeaderDesktop = () => {
                         <Link to="/product">Produk</Link> 
                     </li>
                     <li>
-                        <Link to="/education">Edukasi</Link>
+                        <Link to="/edukasi">Edukasi</Link>
                     </li>
                     <li>
                         <Link to="/contact">Tentang Kami</Link> 

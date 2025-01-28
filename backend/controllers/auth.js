@@ -3,11 +3,11 @@
 
   async function login(req, res) {
       try {
-        const { id, password } = req.body;
+        const { email, password } = req.body;
     
         console.log("Login request received:", req.body);
     
-        const user = await usersModel.userDetailByID(id);
+        const user = await usersModel.userDetailByEmail(email);
         console.log("Fetched user:", user);
     
         if (!user) {
@@ -38,12 +38,12 @@
         res.status(500).json({ message: "Internal server error" });
       }
     }
-  async function userDetailByID(req, res) {
+  async function userDetailByEmail(req, res) {
       try {
-        const { id } = req.params;
+        const { email } = req.params;
     
         
-        const user = await usersModel.userDetailByID(id);
+        const user = await usersModel.userDetailByEmail(email);
     
         if (!user) {
           return res.status(404).json({ message: "User not found" });
@@ -61,5 +61,5 @@
     
     module.exports = {
       login,
-      userDetailByID,
+      userDetailByEmail,
     };

@@ -27,6 +27,28 @@ async function userDetailByID(id) {
   }
 }
 
+async function userDetailByEmail(email) {
+  try {
+    console.log("Fetching user with email:", email);
+    const [rows] = await connection.execute(
+      "SELECT * FROM users WHERE email = ?",
+      [email]
+    );
+
+    console.log("Query result:", rows); 
+
+    if (!rows || rows.length === 0) {
+      console.log("User not found");
+      return null; 
+    }
+
+    return rows[0]; 
+  } catch (error) {
+    console.error("Error in userDetailByEmail:", error);
+    throw error; 
+  } 
+}
+
 async function createUser(user) {
   try {
     const { username, password, email, address, phone_number, role } = user;
@@ -100,4 +122,5 @@ module.exports = {
   updateUserByID,
   updatePasswordByID,
   deleteUserByID,
+  userDetailByEmail,
 };

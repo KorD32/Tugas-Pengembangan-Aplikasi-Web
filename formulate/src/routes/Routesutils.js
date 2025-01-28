@@ -9,7 +9,8 @@ import Register from "../page/register";
 import { HomePage } from "../page/HomePage";
 import History from "../page/History";
 import Checkout from "../page/Checkout";
-import ProtectedRoute from "./ProtectedRoute"; // Import komponen ProtectedRoute
+import ProtectedRoute from "./ProtectedRoute"; 
+import Edukasi from "../page/Edukasi";
 
 function Routesutils() {
   return (
@@ -18,6 +19,7 @@ function Routesutils() {
       <Route path="*" element={<NotFound />} />
       <Route path="/login/" element={<Login />} />
       <Route path="/register/" element={<Register />} />
+      <Route path ="/edukasi" element={<Edukasi />} />
 
       <Route
         path="/home/"

@@ -10,6 +10,7 @@ import axios from "axios";
 export const Login = () => {
   const [id, setUserID] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   const navigate = useNavigate();
 
@@ -21,6 +22,7 @@ export const Login = () => {
         {
           id,
           password,
+          email,
         }
       );
       if(response.status === 200) {
@@ -54,13 +56,13 @@ export const Login = () => {
           <form className="login-forum">
             <h2>Masuk ke akun mu</h2>
             <div className="input-container">
-              <label className="label">ID</label>
+              <label className="label">Email</label>
               <input
                 className="input"
                 type="email"
                 name="email"
-                onChange={(e) => setUserID(e.target.value)}
-                placeholder="ID"
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Masukkan Email"
                 required
               />
             </div>
