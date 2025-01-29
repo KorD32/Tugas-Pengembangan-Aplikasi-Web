@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ProductCardDb from "../molecules/ProductCardDb"; 
-import productsData from "../data/Product";
+import products from "../data/Product";
 import "../style/productsectiondb.css";
 
 export const ListProductDb = () => {
@@ -9,39 +9,39 @@ export const ListProductDb = () => {
 
   const nextProduct = () => {
     setActiveIndex((prevIndex) =>
-      (prevIndex + 1) % productsData.length
+      prevIndex < products.length - 1 ? prevIndex + 1 : 0
     );
   };
 
   const prevProduct = () => {
     setActiveIndex((prevIndex) =>
-      (prevIndex - 1 + productsData.length) % productsData.length
+      prevIndex > 0 ? prevIndex - 1 : products.length - 1 
     );
   };
 
   const displayedProducts = [
-    ...productsData.slice(activeIndex),
-    ...productsData.slice(0, activeIndex)
-  ].slice(0, productsPerPage);
+    ...products.slice(activeIndex),
+    ...products.slice(0, activeIndex),
+  ].slice(0,productsPerPage)
 
   return (
-    <section className="product-section-desktop" id="products">
-      <h1>Product</h1>
-      <div className="product-slider">
-        <button className="prev-button" onClick={prevProduct}>
+    <section className="product-section-dashboard" id="products">
+      <h1>Produk</h1>
+      <div className="product-slider-dashboard">
+        <button className="prev-button-dashboard" onClick={prevProduct}>
           ❮
         </button>
-        <div className="product-cards">
+        <div className="product-cards-dashboard">
           {displayedProducts.map((product) => (
             <ProductCardDb 
               key={product.id}
               imageUrl={product.imageUrl}
               name={product.name}
-              hideDetails={true} 
+              price={product.price}
             />
           ))}
         </div>
-        <button className="next-button" onClick={nextProduct}>
+        <button className="next-button-dashboard" onClick={nextProduct}>
           ❯
         </button>
       </div>

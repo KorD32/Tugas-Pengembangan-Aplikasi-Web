@@ -20,7 +20,9 @@ const ProductCard = ({
   };
 
   const handleCardClick = () => {
-    navigate(`/productdetail/${id}`); 
+    setTimeout(() => {
+      navigate(`/productdetail/${id}`); 
+    }, 600);
   };
 
   return (

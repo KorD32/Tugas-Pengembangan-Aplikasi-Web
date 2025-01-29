@@ -8,9 +8,8 @@ import { FooterCr } from "../component/FooterCr";
 import axios from "axios";
 
 export const Login = () => {
-  const [id, setUserID] = useState("");
-  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
@@ -20,7 +19,6 @@ export const Login = () => {
       const response = await axios.post(
         "http://localhost:3000/web/auth/login",
         {
-          id,
           password,
           email,
         }
@@ -43,7 +41,7 @@ export const Login = () => {
       }
     } catch(error) {
       console.error(error);
-      alert("Wrong password or ID");
+      alert("Wrong Email or Password");
     }
   };
   return (

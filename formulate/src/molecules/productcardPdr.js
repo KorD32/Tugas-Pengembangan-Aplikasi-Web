@@ -22,9 +22,9 @@ const ProductCardPdr = ({ product, onClick }) => {
           className="recommended-img"
         />
       </div>
-      <h4>{product.name || "Unnamed Product"}</h4>
+      <h4 className="title">{product.name || "Unnamed Product"}</h4>
       <p>{formatRupiah(product.price)}</p>
-      <Rating value={product.rating || 0} precision={0.5} readOnly size="small" />
+      <Rating value={product.rating || 0} precision={0.1} readOnly size="small" />
     </div>
   );
 };

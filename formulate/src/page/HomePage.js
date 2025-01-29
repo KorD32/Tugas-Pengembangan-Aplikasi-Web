@@ -10,7 +10,9 @@ export const HomePage = () => {
   return (
     <div className="homepage">
       <HeaderHome />
-      <ListBanner />
+      <section className="list-banner">
+        <ListBanner />
+      </section>
 
       <section className="product-category">
         <h1>Skincare</h1>

@@ -2,12 +2,22 @@ import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import "../style/Checkout.css";
 import { HeaderHome } from "../component/HeaderHome";
+import Rating from "@mui/material/Rating"; 
 
 const Checkout = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const product = location.state?.product; 
   const userId = localStorage.getItem("id"); 
+
+  const formatRupiah = (price) => {
+    const parsedPrice = parseFloat(price) || 0;
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
+    }).format(parsedPrice);
+  };
 
   const handleCheckout = async () => {
     if (!userId) {
@@ -51,13 +61,14 @@ const Checkout = () => {
     <div className="container-checkout">
       <HeaderHome />
       <h2 className="header-checkout">Ringkasan Pemesanan</h2>
-
       <div className="product-checkout">
-        <img src={product?.imageUrl || "not-available.jpeg"} alt={product?.name || "Produk"} className="product-image-checkout" />
+        <div className="image-product">
+          <img src={product?.imageUrl || "not-available.jpeg"} alt={product?.name || "Produk"} className="product-image-checkout" />
+        </div>
         <div className="product-details-checkout">
           <h3>{product?.name || "Unknown Product"}</h3>
           <p>{product?.description || "No description available"}</p>
-          <p>⭐ {product?.rating || 0}</p>
+          <p className="rating-checkout"><Rating value={product?.rating || 0} readOnly precision={0.5} /> {product?.rating || "No rating available"}</p>
         </div>
       </div>
 
@@ -65,11 +76,11 @@ const Checkout = () => {
         <h3>Detail Transaksi</h3>
         <div className="detail-row">
           <span>Item Total</span>
-          <span>Rp{product?.price?.toLocaleString("id-ID") || 0}</span>
+          <span>{formatRupiah(product?.price) || "Rp0"}</span>
         </div>
         <div className="detail-row total">
           <span>Total Bayar</span>
-          <span>Rp{product?.price?.toLocaleString("id-ID") || 0}</span>
+          <span>{formatRupiah(product?.price) || "Rp0"}</span>
         </div>
       </div>
 

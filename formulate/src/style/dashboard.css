@@ -128,9 +128,10 @@ header.scrolled {
 }
 
 footer {
-    width: 100%;
+    margin-bottom: 15px;
+    width: 98%;
     border-radius: 10px;
-    background-color: #cecece;
+    background-color: #dfdfdf;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     animation: fadeInFooter 0.4s ease-out forwards; 
 }

@@ -1,14 +1,123 @@
-.product-section-hm {
+.productdetail-section {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: 30px;
     width: 100%;
-    padding: 10px;
-    margin: 20px 0px;
+    max-height: 400px;
+    margin-top: 40px;
+    padding: 0 30px;
 }
 
-.product-section-hm .product-image {
+.product-image { 
+    width: 100%;
+    max-height: 400px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.17);
+}
+
+.product-image .main-image { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-image img { 
+    width: 50%;
+    max-height: 1000px;
+    object-fit: cover;
+    display: block;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    padding: 10px 20px;
+    gap: 30px;
+    width: 100%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.17);
+}
+
+.product-info .price {
+    font-weight: bold;
+    font-size: 28px;
+    color: black;
+}
+
+.product-info .quantity-selector {
+    display: flex;
+    align-items: center;
+}
+
+.product-info .rating {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: medium;
+    gap: 10px;
+}
+
+.quantity .add-quantity,
+.quantity .total-quantity {
+    border: none;
+    font-size: medium;
+}
+
+.quantity .total-quantity {
+    text-align: center;
+    width: 50px;
+}
+
+
+.product-info .buy-btn {
+    gap: 10px;
+    display: flex;
+}
+
+.buy-btn .add-to-cart-btn {
+    padding: 15px 20px;
+    border: 1px solid black;
+    width: 50%;
+    border-radius: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    background-color: #f8f9fa;
+}
+
+.buy-btn .add-to-cart-btn:hover {
+    transform: scale(1.05);
+}
+
+.buy-btn .buy-now-btn {
+    width: 50%;
+    padding: 15px 20px;
+    background: black;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.buy-btn .buy-now-btn:hover {
+    transform: scale(1.05);
+}
+
+/* .product-section-hm .product-image {
     width: 45%;
+    max-height: 400px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -16,8 +125,8 @@
 
 .product-image .main-image {
     width: 100%;
-    max-width: 400px;
-    max-height: 400px; 
+    display: flex;
+    justify-content: center;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
@@ -29,8 +138,8 @@
 }
 
 .main-image img {
-    width: 100%;
-    height: auto;
+    width: 55%;
+    min-height: 400px;
     object-fit: cover;
     display: block;
 }
@@ -39,19 +148,20 @@
     position: relative;
     margin-bottom: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .product-card:hover {
-    transform: scale(1.05); 
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
-  }
-  .thumbnail-images img {
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.thumbnail-images img {
     transition: transform 0.3s ease;
-  }
-  
-  .thumbnail-images img:hover {
-    transform: scale(1.1); 
-  }  
+}
+
+.thumbnail-images img:hover {
+    transform: scale(1.1);
+}
 
 .product-section-hm .thumbnail-images {
     display: flex;
@@ -78,7 +188,7 @@
 
 .product-info {
     width: 45%;
-    max-width: 500px;
+    max-height: 400px;
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -137,9 +247,6 @@
     color: black;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.add-to-cart-btn {
     background-color: #f8f9fa;
 }
 
@@ -215,4 +322,4 @@
         padding: 10px 15px;
         font-size: small;
     }
-}
+} */

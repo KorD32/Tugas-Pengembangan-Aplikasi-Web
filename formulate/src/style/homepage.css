@@ -1,20 +1,18 @@
 
 .homepage {
-    font-family: "Raleway", sans-serif;
     background-color: #f9f9f9;
+}
+
+.list-banner { 
+    padding-bottom: 80px;
 }
 
 .product-category {
     text-align: center;
-    padding: 40px 0;
 }
 
 .product-category h1 {
-    font-size: 24px;
-    font-weight: 700;
     text-transform: uppercase;
-    color: #333;
-    margin-bottom: 20px;
     position: relative;
     display: inline-block;
 }
@@ -39,7 +37,7 @@
 .next-button {
     background-color: transparent;
     color: #ff6f61;
-    font-size: 28px;
+    font-size: 26px;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -47,7 +45,7 @@
 
 .prev-button:hover,
 .next-button:hover {
-    transform: scale(1.2);
+    font-size: 30px;
     color: #d64b3a;
 }
 

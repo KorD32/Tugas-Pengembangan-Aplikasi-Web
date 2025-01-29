@@ -6,6 +6,7 @@ import RecommendedProducts from "../component/RecommendedProducts";
 import ProductListPd from "../component/ProductSectionPd";
 import { Footer } from "../component/FooterPart";
 import { FooterCr } from "../component/FooterCr";
+import "../style/productdetail.css"
 
 const ProductDetail = () => {
   const { id } = useParams(); 

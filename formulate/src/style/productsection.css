@@ -33,8 +33,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 300px;
-    height: 270px;
-    gap: 10px;
+    height: 330px;
     padding: 10px 20px;
     text-align: center;
     border: 1px solid rgba(0, 0, 0, 0.15);
@@ -44,6 +43,10 @@
 .product-card:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+.product-card:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .product-card .image-section { 
@@ -62,3 +65,7 @@
     display: block;
     transition: opacity 0.3s ease;
   }
+
+.product-card .title { 
+    height: 60px;
+}

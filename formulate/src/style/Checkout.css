@@ -1,38 +1,48 @@
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 .container-checkout {
-  max-width: 400px;
-  margin: 0 auto;
+  margin: 40px auto;
+  width: 80%;
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 3%;
 }
 
 .product-checkout {
   display: flex;
-  align-items: center;
-  margin: 20px 0;
+  padding: 20px 30px;
 }
 
+.product-checkout .image-product { 
+  width: 30%;
+  max-height: 330px;
+}
 .product-image-checkout {
-  width: 80px;
-  height: 80px;
+  width: 50%;
   object-fit: cover;
   margin-right: 15px;
 }
 
-.product-details-checkout h3 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: bold;
+.product-details-checkout {
+  display: flex; 
+  flex-direction: column;
+  gap: 20px;
 }
 
 .product-details-checkout p {
-  margin: 5px 0;
   font-size: 14px;
   color: #555;
+}
+
+.product-details-checkout .rating-checkout{ 
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .transaction-details {
@@ -72,14 +82,50 @@
 .pay-button {
   width: 100%;
   padding: 12px;
-  background-color: #4CAF50;
+  background-color: #000000;
   color: white;
   border: none;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .pay-button:hover {
-  background-color: #45a049;
+  background-color: #333;
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.pay-button:focus {
+  outline: 3px solid #ffcc00; /* A clear focus outline for accessibility */
+}
+
+@media (max-width: 768px) {
+  .container-checkout {
+    width: 95%;
+  }
+
+  .product-checkout {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .product-image-checkout {
+    width: 100px;
+    height: 100px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .product-details-checkout h3 {
+    font-size: 14px;
+  }
+
+  .transaction-details {
+    font-size: 14px;
+  }
+
+  .pay-button {
+    font-size: 14px;
+  }
 }

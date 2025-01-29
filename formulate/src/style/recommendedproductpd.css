@@ -1,5 +1,5 @@
 .recommended-products {
-    margin: 40px 0;
+    padding: 40px 30px;
   }
   
   .recommended-products h3 {
@@ -55,6 +55,7 @@
     transform: scale(1.05);
   }
   .recommended-item h4{
+    height: 60px;
     padding-top: 10px;
   }
   .recommended-item p {
@@ -71,51 +72,7 @@
   .related-products-list > *:hover {
     transform: scale(1.05);
   }
-  
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-  }
-  
-  .product-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    height: 100%;
-  }
-  
-  .product-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .product-card h3 {
-    font-size: 16px;
-    text-align: center;
-    margin-bottom: 8px;
-  }
-  
-  .product-card .price {
-    font-size: 14px;
-    font-weight: bold;
-    color: #ff6f61;
-    text-align: center;
-    margin: 8px 0;
-  }
-  
-  .product-card .rating {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    gap: 2px;
-    margin-top: 10px;
-  }
-  
+
   @media (max-width: 1024px) {
     .recommended-items {
       grid-template-columns: repeat(3, 1fr);

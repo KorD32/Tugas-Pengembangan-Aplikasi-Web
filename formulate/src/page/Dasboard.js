@@ -25,13 +25,13 @@ export const Dashboard = () => {
                         <p>Formulate adalah solusi inovatif untuk perawatan diri yang dirancang untuk membantu anda mencapai penampilan terbaik dengan cara yang menyenangkan dan mudah. Dengan pendekatan berbasis data dan personalisasi, kami mengajak Anda untuk mengeksplorasi dunia perawatan diri dengan cara yang belum pernah Anda alami sebelumnya.</p>
                     </div>
                 </section>
-                <section>
+                <section id="product">
                     <ListProductDb/>
                 </section>
-                <section >
+                <section>
                     <ListBanner/>
                 </section>
-                <section>
+                <section id="education">
                     <KnowLedgeList/>
                 </section>
             </main>
